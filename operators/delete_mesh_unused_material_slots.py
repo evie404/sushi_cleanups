@@ -41,10 +41,3 @@ def _delete_unused_material_slots(obj: Object) -> None:
 
     if previously_hidden:
         obj.hide_viewport = True
-
-    # context = bpy.context
-    # scene = context.scene
-
-    # bpy.ops.object.material_slot_delete_unused(
-    #     {"object": scene.objects[0], "selected_objects": scene.objects}
-    # )

@@ -12,12 +12,15 @@ class SUSHI_CLEANUP_SortVertexGroups(SushiAllMeshOperator):
     sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "SORT"}
 
     def sk_obj_exec(self, obj: Object) -> None:
-        bpy.context.view_layer.objects.active = None
-
         if len(obj.vertex_groups) < 1:
             return
 
-        obj.select_set(True)
-        bpy.context.view_layer.objects.active = obj
-
-        bpy.ops.object.vertex_group_sort()
+        bpy.ops.object.vertex_group_sort(
+            {
+                "active_object": obj,
+                "edit_object": obj,
+                "editable_objects": [obj],
+                "object": obj,
+                "selected_objects": [obj],
+            }
+        )
