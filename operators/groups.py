@@ -8,6 +8,7 @@ from sushi_cleanups.operators.delete_similar_same_mesh import (
 )
 from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
+from .dedup_names import SUSHI_CLEANUP_DedupNames
 from .delete_armature_empty_bone_groups import (
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll,
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected,
@@ -46,6 +47,7 @@ from .rename_global_unique_user_materials import SUSHI_CLEANUP_RenameUniqueUserM
 from .sort_global_all_vertex_groups import SUSHI_CLEANUP_SortVertexGroups
 
 ALL_OPERATIONS: Set[SushiBaseOperator] = {
+    SUSHI_CLEANUP_DedupNames,
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll,
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected,
     SUSHI_CLEANUP_DeleteEmptyCollections,
@@ -82,6 +84,12 @@ DELETE_SELECTED: Set[SushiBaseOperator] = {
 
 DELETE_SIMILAR: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SIMILAR" in x.sk_tags and "DELETE" in x.sk_tags
+}
+
+RENAME_ALL: Set[SushiBaseOperator] = {
+    x
+    for x in ALL_OPERATIONS
+    if "ALL" in x.sk_tags and "RENAME" in x.sk_tags and "DATA" not in x.sk_tags
 }
 
 RENAME_ALL_DATA: Set[SushiBaseOperator] = {

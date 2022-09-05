@@ -9,7 +9,7 @@ from .sushi_base_operator import SushiMeshOperator
 class SUSHI_CLEANUP_DeleteSameMeshObjects(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_objects_of_same_mesh"
     bl_label = "Delete Objects with the same Mesh"
-    bl_description = "Delete Objects that uses the same mesh data"
+    bl_description = "Delete all objects that uses the same mesh data"
 
     sk_tags = {"SIMILAR", "MESH", "DELETE"}
 
