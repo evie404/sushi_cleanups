@@ -1,9 +1,7 @@
-from .version_0_0_1 import VERSION
-
 bl_info = {
     "name": "Sushi Cleanups",
     "author": "SushiKitty",
-    "version": VERSION,
+    "version": (0, 0, 1),
     "blender": (2, 92, 0),
     "description": "Small scripts to clean up data and objects",
     "location": "View3D > Sidebar > Sushi Cleanups",
