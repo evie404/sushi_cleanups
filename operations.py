@@ -4,7 +4,7 @@ from bpy.types import Operator
 
 from sushi_cleanups.remove_empty_bone_groups import (
     SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll,
-    SUSHI_CLEANUP_RemoveEmptyBoneGroupsSingle,
+    SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected,
 )
 from sushi_cleanups.remove_empty_collections import SUSHI_CLEANUP_RemoveEmptyCollections
 from sushi_cleanups.remove_empty_color_maps import SUSHI_CLEANUP_RemoveEmptyColorMaps
@@ -20,9 +20,10 @@ from sushi_cleanups.remove_unused_materials import SUSHI_CLEANUP_RemoveUnusedMat
 from sushi_cleanups.remove_unused_meshes import SUSHI_CLEANUP_RemoveUnusedMeshes
 from sushi_cleanups.rename_armatures import SUSHI_CLEANUP_RenameArmatures
 from sushi_cleanups.rename_meshes import SUSHI_CLEANUP_RenameMeshes
-from sushi_cleanups.rename_single_user_materials import (
-    SUSHI_CLEANUP_RenameSingleUserMaterials,
+from sushi_cleanups.rename_unique_user_materials import (
+    SUSHI_CLEANUP_RenameUniqueUserMaterials,
 )
+from sushi_cleanups.sort_all_vertex_groups import SUSHI_CLEANUP_SortVertexGroups
 
 OPERATIONS_ALL: Set[Operator] = {
     SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll,
@@ -36,9 +37,10 @@ OPERATIONS_ALL: Set[Operator] = {
     SUSHI_CLEANUP_RemoveUnusedMeshes,
     SUSHI_CLEANUP_RenameArmatures,
     SUSHI_CLEANUP_RenameMeshes,
-    SUSHI_CLEANUP_RenameSingleUserMaterials,
+    SUSHI_CLEANUP_RenameUniqueUserMaterials,
+    SUSHI_CLEANUP_SortVertexGroups,
 }
 
-OPERATIONS_SINGLE: Set[Operator] = {
-    SUSHI_CLEANUP_RemoveEmptyBoneGroupsSingle,
+OPERATIONS_SELECTED: Set[Operator] = {
+    SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected,
 }

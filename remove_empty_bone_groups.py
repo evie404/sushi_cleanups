@@ -6,8 +6,8 @@ from bpy.types import Context, Object
 from .base_operation import SushiBaseOperation
 
 
-class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSingle(SushiBaseOperation):
-    bl_idname = "sushi_cleanup.remove_empty_bone_groups_single"
+class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperation):
+    bl_idname = "sushi_cleanup.remove_empty_bone_groups_selected"
     bl_label = "Remove Empty Bone Groups"
     bl_description = "Removes bone groups with no vertices."
     bl_options = {"UNDO"}

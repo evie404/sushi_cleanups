@@ -24,10 +24,10 @@ bl_info = {
 
 import bpy
 
-from sushi_cleanups.operations import OPERATIONS_ALL, OPERATIONS_SINGLE
+from sushi_cleanups.operations import OPERATIONS_ALL, OPERATIONS_SELECTED
 from sushi_cleanups.ui import UI_CLASSES
 
-CLASSES = list(OPERATIONS_SINGLE) + list(OPERATIONS_ALL) + list(UI_CLASSES)
+CLASSES = list(OPERATIONS_SELECTED) + list(OPERATIONS_ALL) + list(UI_CLASSES)
 
 
 def register():
