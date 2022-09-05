@@ -24,20 +24,20 @@ bl_info = {
 
 import bpy
 
-from sushi_cleanups.operations import OPERATIONS_ALL, OPERATIONS_SELECTED
+from sushi_cleanups.operations import OPERATION_CLASSES
 from sushi_cleanups.ui import UI_CLASSES
 
-CLASSES = list(OPERATIONS_SELECTED) + list(OPERATIONS_ALL) + list(UI_CLASSES)
+ALL_CLASSES = list(OPERATION_CLASSES) + list(UI_CLASSES)
 
 
 def register():
-    for cls in CLASSES:
+    for cls in ALL_CLASSES:
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
 
 def unregister():
-    for cls in CLASSES:
+    for cls in ALL_CLASSES:
         print(f"unregistering {cls}...")
         bpy.utils.unregister_class(cls)
 

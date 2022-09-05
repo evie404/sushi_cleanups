@@ -1,4 +1,4 @@
-from typing import Set
+from typing import List, Set
 
 from bpy.types import Operator
 
@@ -68,3 +68,5 @@ OPERATIONS_SELECTED: Set[Operator] = {
     SUSHI_CLEANUP_RemoveUnusedUVMapsSelected,
     SUSHI_CLEANUP_RemoveUnusedVertexColorsSelected,
 }
+
+OPERATION_CLASSES: List[Operator] = list(OPERATIONS_ALL) + list(OPERATIONS_SELECTED)
