@@ -1,3 +1,5 @@
+from typing import List, Type
+
 bl_info = {
     "name": "Sushi Cleanups",
     "author": "SushiKitty",
@@ -39,23 +41,26 @@ if "bpy" in locals():
     reload_package(locals())
 
 
-import bpy
+def all_classes() -> List[Type]:
+    from .operators.groups import ALL_OPERATIONS
+    from .preferences import SushiCleanupsAddonPreferences
+    from .ui import UI_CLASSES
 
-from .operators.groups import ALL_OPERATIONS
-from .preferences import SushiCleanupsAddonPreferences
-from .ui import UI_CLASSES
-
-ALL_CLASSES = [SushiCleanupsAddonPreferences] + list(ALL_OPERATIONS) + list(UI_CLASSES)
+    return [SushiCleanupsAddonPreferences] + list(ALL_OPERATIONS) + list(UI_CLASSES)
 
 
 def register():
-    for cls in ALL_CLASSES:
+    import bpy
+
+    for cls in all_classes():
         print(f"registering {cls}...")
         bpy.utils.register_class(cls)
 
 
 def unregister():
-    for cls in ALL_CLASSES:
+    import bpy
+
+    for cls in all_classes():
         print(f"unregistering {cls}...")
         bpy.utils.unregister_class(cls)
 
