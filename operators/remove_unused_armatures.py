@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_RemoveUnusedArmatures(bpy.types.Operator):
     bl_description = "Removes armatures with no users"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "ARMATURE", "UNUSED", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for armature in bpy.data.armatures:
             armature: Armature

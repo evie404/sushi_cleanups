@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_SortVertexGroups(bpy.types.Operator):
     bl_description = "Sort vertex groups by names for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "SORT"}
+
     def execute(self, context: Context) -> Set[str]:
         bpy.context.view_layer.objects.active = None
 

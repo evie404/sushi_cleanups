@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperator):
     bl_description = "Removes unused UV maps for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "UNUSED", "UV_MAP", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             if obj.type == "MESH":
@@ -25,6 +27,8 @@ class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiBaseOperator):
     bl_label = "Remove Unused UV Maps"
     bl_description = "Removes unused UV maps for the selected object"
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "MESH", "UNUSED", "UV_MAP", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_mesh(context)

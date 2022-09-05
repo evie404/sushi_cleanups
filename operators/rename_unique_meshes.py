@@ -8,6 +8,8 @@ class SUSHI_CLEANUP_RenameUniqueMeshes(bpy.types.Operator):
     bl_description = "Renames meshes data to use their object name"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "UNIQUE", "RENAME"}
+
     def execute(self, context: Context):
         mesh_objs = [obj for obj in bpy.data.objects if obj.type == "MESH"]
 

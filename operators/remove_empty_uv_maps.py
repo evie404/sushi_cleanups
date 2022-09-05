@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveEmptyUVMapsAll(SushiBaseOperator):
     bl_description = "Removes UV maps with only default coordinates for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             obj: Object
@@ -28,6 +30,8 @@ class SUSHI_CLEANUP_RemoveEmptyUVMapsSelected(SushiBaseOperator):
         "Removes UV maps with only default coordinates for the selected object"
     )
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_mesh(context)

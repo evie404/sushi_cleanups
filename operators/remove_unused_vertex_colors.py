@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveUnusedVertexColorsAll(SushiBaseOperator):
     bl_description = "Removes non-active vertex colors for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "UNUSED", "VERTEX_COLOR", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             obj: Object
@@ -26,6 +28,8 @@ class SUSHI_CLEANUP_RemoveUnusedVertexColorsSelected(SushiBaseOperator):
     bl_label = "Remove Unused Vertex Colors"
     bl_description = "Removes non-active vertex colors for the selected object"
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "MESH", "UNUSED", "VERTEX_COLOR", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_mesh(context)

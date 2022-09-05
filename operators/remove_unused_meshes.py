@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_RemoveUnusedMeshes(bpy.types.Operator):
     bl_description = "Removes meshes with no users"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "UNUSED", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for mesh in bpy.data.meshes:
             mesh: Mesh

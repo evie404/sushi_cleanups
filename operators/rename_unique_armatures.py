@@ -8,6 +8,8 @@ class SUSHI_CLEANUP_RenameUniqueArmatures(bpy.types.Operator):
     bl_description = "Renames armatures data to use their object name"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "ARMATURE", "UNIQUE", "RENAME"}
+
     # TODO: debug
     def execute(self, context: Context):
         for obj in bpy.data.objects:

@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperator):
     bl_description = "Removes bone groups with no vertices for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "BONE_GROUP", "EMPTY", "ARMATURE", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             if obj.type == "ARMATURE":
@@ -25,6 +27,8 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperator):
     bl_label = "Remove Empty Bone Groups"
     bl_description = "Removes bone groups with no vertices for the selected object"
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "BONE_GROUP", "EMPTY", "ARMATURE", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_armature(context)

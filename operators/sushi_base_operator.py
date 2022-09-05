@@ -5,6 +5,8 @@ from bpy.types import Context
 
 
 class SushiBaseOperator(bpy.types.Operator):
+    sk_tags: Set[str]
+
     def check_for_armature(self, context: Context) -> Optional[Set[str]]:
         if not bpy.context.active_object:
             self.report({"ERROR_INVALID_CONTEXT"}, "Please select an armature object.")

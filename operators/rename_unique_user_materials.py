@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_RenameUniqueUserMaterials(bpy.types.Operator):
     bl_description = "Renames materials that only have one user to their user's name"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "MATERIAL", "UNIQUE", "RENAME"}
+
     def execute(self, context: Context) -> Set[str]:
         material_users: Dict[Material, List[Object]] = {}
 

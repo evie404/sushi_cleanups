@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperator):
     bl_description = "Removes vertex groups with no vertices for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             if obj.type == "MESH":
@@ -25,6 +27,8 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiBaseOperator):
     bl_label = "Remove Empty Vertex Groups"
     bl_description = "Removes vertex groups with no vertices for the selected object"
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "VERTEX_GROUP", "EMPTY", "MESH", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_mesh(context)

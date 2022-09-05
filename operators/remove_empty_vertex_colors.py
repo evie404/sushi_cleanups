@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
     bl_description = "Removes vertex colors with only default colors for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "REMOVE"}
+
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
@@ -31,6 +33,8 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiBaseOperator):
         "Removes vertex colors with only default colors for the selected object"
     )
     bl_options = {"UNDO"}
+
+    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "REMOVE"}
 
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:

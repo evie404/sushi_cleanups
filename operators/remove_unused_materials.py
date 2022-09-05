@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_RemoveUnusedMaterials(bpy.types.Operator):
     bl_description = "Removes materials with no users"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MATERIAL", "UNUSED", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for material in bpy.data.materials:
             if not material.users:

@@ -10,6 +10,8 @@ class SUSHI_CLEANUP_RemoveEmptyCollections(bpy.types.Operator):
     bl_description = "Removes collections with no children and collapses collections with only one collection children"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "COLLECTION", "EMPTY", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         root = bpy.data.scenes["Scene"].collection
 

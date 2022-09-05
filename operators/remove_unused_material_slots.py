@@ -12,6 +12,8 @@ class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsAll(SushiBaseOperator):
     bl_description = "Removes material slots with no vertices for all objects"
     bl_options = {"UNDO"}
 
+    sk_tags = {"ALL", "MESH", "MATERIAL_SLOT" "UNUSED", "REMOVE"}
+
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             _remove_unused_material_slots(obj)
@@ -24,6 +26,8 @@ class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsSelected(SushiBaseOperator):
     bl_label = "Remove Unused Material Slots"
     bl_description = "Removes material slots with no vertices for the selected object"
     bl_options = {"UNDO"}
+
+    sk_tags = {"SELECTED", "MESH", "MATERIAL_SLOT" "UNUSED", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
         err = self.check_for_mesh(context)
