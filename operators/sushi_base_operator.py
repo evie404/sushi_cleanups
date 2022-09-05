@@ -34,11 +34,10 @@ class SushiAllOperator(SushiBaseOperator):
         return {"FINISHED"}
 
 
-class SushiAllMeshOperator(SushiAllOperator):
-    sk_obj_type = "MESH"
+class SushiSelectedOperator(SushiBaseOperator):
+    sk_obj_type: str
+    sk_obj_exec: Callable[[Object], None]
 
-
-class SushiMeshOperator(SushiBaseOperator):
     def execute(self, context: Context) -> Set[str]:
         self.sk_obj_exec(context.active_object)
 
@@ -46,10 +45,28 @@ class SushiMeshOperator(SushiBaseOperator):
 
     @classmethod
     def poll(cls, context: Context):
-        return context.active_object and context.active_object.type == "MESH"
+        return context.active_object and context.active_object.type == sk_obj_type
 
 
-class SushiArmatureOperator(SushiBaseOperator):
+class SushiAllMeshOperator(SushiAllOperator):
+    sk_obj_type = "MESH"
+
     @classmethod
     def poll(cls, context: Context):
-        return context.active_object and context.active_object.type == "ARMATURE"
+        return len(bpy.data.meshes) > 0
+
+
+class SushiMeshOperator(SushiSelectedOperator):
+    sk_obj_type = "MESH"
+
+
+class SushiAllArmatureOperator(SushiAllOperator):
+    sk_obj_type = "ARMATURE"
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.armatures) > 0
+
+
+class SushiArmatureOperator(SushiSelectedOperator):
+    sk_obj_type = "ARMATURE"

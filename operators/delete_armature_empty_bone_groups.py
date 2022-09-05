@@ -1,12 +1,12 @@
-from typing import Dict, Set
+from typing import Dict
 
 import bpy
-from bpy.types import Context, Object
+from bpy.types import Object
 
-from .sushi_base_operator import SushiArmatureOperator, SushiBaseOperator
+from .sushi_base_operator import SushiAllArmatureOperator, SushiArmatureOperator
 
 
-class SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll(SushiAllArmatureOperator):
     bl_idname = "sushi_cleanup.delete_empty_bone_groups_all"
     bl_label = "Delete All Empty Bone Groups"
     bl_description = "Deletes bone groups with no vertices for all objects"
@@ -14,12 +14,8 @@ class SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "BONE_GROUP", "EMPTY", "ARMATURE", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            if obj.type == "ARMATURE":
-                _delete_empty_bone_groups(obj)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_empty_bone_groups(obj)
 
 
 class SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected(SushiArmatureOperator):
@@ -30,10 +26,8 @@ class SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected(SushiArmatureOperator):
 
     sk_tags = {"SELECTED", "BONE_GROUP", "EMPTY", "ARMATURE", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        _delete_empty_bone_groups(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_empty_bone_groups(obj)
 
 
 def _delete_empty_bone_groups(armobj: Object) -> None:
