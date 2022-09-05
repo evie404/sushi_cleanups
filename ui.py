@@ -9,7 +9,7 @@ from .operators.sushi_base_operator import SushiBaseOperator
 
 class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
     bl_category = "Sushi Cleanups"
-    bl_label = "Remove from Active Object"
+    bl_label = "Delete from Active Object"
     bl_idname = "SUSHI_CLEANUP_PT_Selected"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -34,7 +34,7 @@ class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
 
 class SUSHI_CLEANUP_PT_All(bpy.types.Panel):
     bl_category = "Sushi Cleanups"
-    bl_label = "Remove from All Objects"
+    bl_label = "Delete from All Objects"
     bl_idname = "SUSHI_CLEANUP_PT_All"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"

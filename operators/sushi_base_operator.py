@@ -9,7 +9,7 @@ class SushiBaseOperator(bpy.types.Operator):
 
     @classmethod
     def icon(cls) -> str:
-        if "REMOVE" in cls.sk_tags:
+        if "DELETE" in cls.sk_tags:
             return "TRASH"
 
         if "RENAME" in cls.sk_tags:
@@ -22,7 +22,7 @@ class SushiBaseOperator(bpy.types.Operator):
 
     @classmethod
     def button_description(cls) -> str:
-        return cls.bl_label.replace("Remove All ", "").replace("Rename All")
+        return cls.bl_label.replace("Delete All ", "").replace("Rename All")
 
 
 class SushiMeshOperator(SushiBaseOperator):

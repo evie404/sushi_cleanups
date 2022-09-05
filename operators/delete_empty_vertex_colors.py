@@ -6,13 +6,13 @@ from bpy.types import Context, Mesh, MeshLoopColor, MeshLoopColorLayer, Object
 from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
-    bl_idname = "sushi_cleanup.remove_empty_vertex_colors_all"
-    bl_label = "[Buggy] Remove All Empty Vertex Colors"
-    bl_description = "Removes vertex colors with only default colors for all objects"
+class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiBaseOperator):
+    bl_idname = "sushi_cleanup.delete_empty_vertex_colors_all"
+    bl_label = "[Buggy] Delete All Empty Vertex Colors"
+    bl_description = "Deletes vertex colors with only default colors for all objects"
     bl_options = {"UNDO"}
 
-    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "REMOVE"}
+    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:
@@ -21,30 +21,30 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
             if obj.type != "MESH":
                 continue
 
-            _remove_vertex_colors(obj)
+            _delete_vertex_colors(obj)
 
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiMeshOperator):
-    bl_idname = "sushi_cleanup.remove_empty_vertex_colors_selected"
-    bl_label = "[Buggy] Remove Empty Vertex Colors"
+class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
+    bl_idname = "sushi_cleanup.delete_empty_vertex_colors_selected"
+    bl_label = "[Buggy] Delete Empty Vertex Colors"
     bl_description = (
-        "Removes vertex colors with only default colors for the selected object"
+        "Deletes vertex colors with only default colors for the selected object"
     )
     bl_options = {"UNDO"}
 
-    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "REMOVE"}
+    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:
-        _remove_vertex_colors(bpy.context.active_object)
+        _delete_vertex_colors(bpy.context.active_object)
 
         return {"FINISHED"}
 
 
-def _remove_vertex_colors(obj: Object) -> None:
-    vertex_colors_to_remove: List[MeshLoopColorLayer] = []
+def _delete_vertex_colors(obj: Object) -> None:
+    vertex_colors_to_delete: List[MeshLoopColorLayer] = []
     mesh: Mesh = obj.data
 
     for vertex_color in mesh.vertex_colors:
@@ -64,11 +64,11 @@ def _remove_vertex_colors(obj: Object) -> None:
             zero_color_only = False
 
         if zero_color_only:
-            vertex_colors_to_remove.append(vertex_color)
+            vertex_colors_to_delete.append(vertex_color)
 
-    for vertex_color in vertex_colors_to_remove:
+    for vertex_color in vertex_colors_to_delete:
         if vertex_color.name not in mesh.vertex_colors:
             continue
 
         print(f"{obj.name}: removing color map `{vertex_color.name}`")
-        mesh.vertex_colors.remove(vertex_color)
+        mesh.vertex_colors.delete(vertex_color)

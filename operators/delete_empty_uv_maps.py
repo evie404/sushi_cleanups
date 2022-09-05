@@ -6,44 +6,44 @@ from bpy.types import Context, MeshUVLoop, MeshUVLoopLayer, Object
 from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_RemoveEmptyUVMapsAll(SushiBaseOperator):
-    bl_idname = "sushi_cleanup.remove_empty_uv_maps_all"
-    bl_label = "Remove All Empty UV Maps"
-    bl_description = "Removes UV maps with only default coordinates for all objects"
+class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiBaseOperator):
+    bl_idname = "sushi_cleanup.delete_empty_uv_maps_all"
+    bl_label = "Delete All Empty UV Maps"
+    bl_description = "Deletes UV maps with only default coordinates for all objects"
     bl_options = {"UNDO"}
 
-    sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "REMOVE"}
+    sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "DELETE"}
 
     def execute(self, context: Context) -> Set[str]:
         for obj in bpy.data.objects:
             obj: Object
             if obj.type == "MESH":
-                _remove_empty_uv_maps(obj)
+                _delete_empty_uv_maps(obj)
 
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyUVMapsSelected(SushiMeshOperator):
-    bl_idname = "sushi_cleanup.remove_empty_uv_maps_selected"
-    bl_label = "Remove Empty UV Maps"
+class SUSHI_CLEANUP_DeleteEmptyUVMapsSelected(SushiMeshOperator):
+    bl_idname = "sushi_cleanup.delete_empty_uv_maps_selected"
+    bl_label = "Delete Empty UV Maps"
     bl_description = (
-        "Removes UV maps with only default coordinates for the selected object"
+        "Deletes UV maps with only default coordinates for the selected object"
     )
     bl_options = {"UNDO"}
 
-    sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "REMOVE"}
+    sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "DELETE"}
 
     def execute(self, context: Context) -> Set[str]:
-        _remove_empty_uv_maps(bpy.context.active_object)
+        _delete_empty_uv_maps(bpy.context.active_object)
 
         return {"FINISHED"}
 
 
-def _remove_empty_uv_maps(obj: Object) -> None:
+def _delete_empty_uv_maps(obj: Object) -> None:
     if len(obj.data.uv_layers) < 2:
         return
 
-    uv_layers_to_remove: List[MeshUVLoopLayer] = []
+    uv_layers_to_delete: List[MeshUVLoopLayer] = []
 
     for uv_layer in obj.data.uv_layers:
         uv_layer: MeshUVLoopLayer
@@ -64,11 +64,11 @@ def _remove_empty_uv_maps(obj: Object) -> None:
             zero_one_uv_only = False
 
         if zero_one_uv_only:
-            uv_layers_to_remove.append(uv_layer)
+            uv_layers_to_delete.append(uv_layer)
 
-    for uv_layer in uv_layers_to_remove:
+    for uv_layer in uv_layers_to_delete:
         if uv_layer.name not in obj.data.uv_layers:
             continue
 
         print(f"[{obj.name}] Removing UV map `{uv_layer.name}`")
-        obj.data.uv_layers.remove(uv_layer)
+        obj.data.uv_layers.delete(uv_layer)
