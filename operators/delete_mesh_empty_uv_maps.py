@@ -8,10 +8,10 @@ from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_uv_maps_all"
-    bl_label = "[Buggy] Delete All Empty UV Maps"
+    bl_label = "Delete All Empty UV Maps"
     bl_description = "Deletes UV maps with only default coordinates for all objects"
 
-    sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "DELETE"}
+    sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "DELETE", "EXPERIMENTAL"}
 
     def sk_obj_exec(self, obj: Object) -> None:
         _delete_empty_uv_maps(obj)
@@ -19,12 +19,12 @@ class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):
 
 class SUSHI_CLEANUP_DeleteEmptyUVMapsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_uv_maps_selected"
-    bl_label = "[Buggy] Delete Empty UV Maps"
+    bl_label = "Delete Empty UV Maps"
     bl_description = (
         "Deletes UV maps with only default coordinates for the selected object"
     )
 
-    sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "DELETE"}
+    sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "DELETE", "EXPERIMENTAL"}
 
     def sk_obj_exec(self, obj: Object) -> None:
         _delete_empty_uv_maps(obj)

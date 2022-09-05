@@ -3,16 +3,12 @@ from typing import Dict, Set
 import bpy
 from bpy.types import Context
 
-from .operators.groups import (
-    DELETE_ALL,
-    DELETE_SELECTED,
-    DELETE_SIMILAR,
-    RENAME_ALL_DATA,
-    RENAME_SELECTED,
-    SORT_ALL,
-    SORT_SELECTED,
-)
+from .operators.groups import (DELETE_ALL, DELETE_SELECTED, DELETE_SIMILAR,
+                               RENAME_ALL_DATA, RENAME_SELECTED, SORT_ALL,
+                               SORT_SELECTED)
 from .operators.sushi_base_operator import SushiBaseOperator
+from .preferences import SushiCleanupsAddonPreferences
+from .version import ADDON_NAME
 
 
 class SushiBasePanel(bpy.types.Panel):
@@ -28,6 +24,7 @@ class SushiBasePanel(bpy.types.Panel):
 
         for bl_idname in sorted(op_map.keys()):
             op = op_map[bl_idname]
+
             label = (
                 op.bl_label.replace("Delete All ", "")
                 .replace("Rename All", "")
@@ -36,6 +33,16 @@ class SushiBasePanel(bpy.types.Panel):
                 .replace("Rename", "")
                 .replace("Sort", "")
             )
+
+            if "EXPERIMENTAL" in op.sk_tags:
+                preferences: SushiCleanupsAddonPreferences = context.preferences.addons[
+                    ADDON_NAME
+                ].preferences
+
+                if not preferences.enable_experimental_features:
+                    continue
+
+                label = "[Exp] " + label
 
             col.operator(op.bl_idname, text=label, icon=op.icon())
 

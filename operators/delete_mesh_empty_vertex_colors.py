@@ -8,10 +8,10 @@ from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_colors_all"
-    bl_label = "[Buggy] Delete All Empty Vertex Colors"
+    bl_label = "Delete All Empty Vertex Colors"
     bl_description = "Deletes vertex colors with only default colors for all objects"
 
-    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
+    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE", "EXPERIMENTAL"}
 
     def sk_obj_exec(self, obj: Object) -> None:
         _delete_vertex_colors(obj)
@@ -19,12 +19,12 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiAllMeshOperator):
 
 class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_colors_selected"
-    bl_label = "[Buggy] Delete Empty Vertex Colors"
+    bl_label = "Delete Empty Vertex Colors"
     bl_description = (
         "Deletes vertex colors with only default colors for the selected object"
     )
 
-    sk_tags = {"SELECTED", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
+    sk_tags = {"SELECTED", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE", "EXPERIMENTAL"}
 
     # TODO: debug
     def sk_obj_exec(self, obj: Object) -> None:

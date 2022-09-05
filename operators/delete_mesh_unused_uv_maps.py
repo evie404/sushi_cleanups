@@ -11,7 +11,7 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsAll(SushiAllMeshOperator):
     bl_label = "Delete All Unused UV Maps"
     bl_description = "Deletes unused UV maps for all objects"
 
-    sk_tags = {"ALL", "MESH", "UNUSED", "UV_MAP", "DELETE"}
+    sk_tags = {"ALL", "MESH", "UNUSED", "UV_MAP", "DELETE", "EXPERIMENTAL"}
 
     def sk_obj_exec(self, obj: Object) -> None:
         _delete_unused_uv_maps(obj)
@@ -22,7 +22,7 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsSelected(SushiMeshOperator):
     bl_label = "Delete Unused UV Maps"
     bl_description = "Deletes unused UV maps for the selected object"
 
-    sk_tags = {"SELECTED", "MESH", "UNUSED", "UV_MAP", "DELETE"}
+    sk_tags = {"SELECTED", "MESH", "UNUSED", "UV_MAP", "DELETE", "EXPERIMENTAL"}
 
     def sk_obj_exec(self, obj: Object) -> None:
         _delete_unused_uv_maps(obj)

@@ -42,9 +42,10 @@ if "bpy" in locals():
 import bpy
 
 from .operators.groups import ALL_OPERATIONS
+from .preferences import SushiCleanupsAddonPreferences
 from .ui import UI_CLASSES
 
-ALL_CLASSES = list(ALL_OPERATIONS) + list(UI_CLASSES)
+ALL_CLASSES = [SushiCleanupsAddonPreferences] + list(ALL_OPERATIONS) + list(UI_CLASSES)
 
 
 def register():
