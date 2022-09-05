@@ -3,7 +3,7 @@ from typing import Optional, Set
 import bpy
 from bpy.types import Collection, Context
 
-from .sushi_base_operator import SushiBaseOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_DeleteEmptyCollections(SushiBaseOperator):

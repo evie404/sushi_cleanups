@@ -3,7 +3,7 @@ from typing import List
 import bpy
 from bpy.types import EditBone, Object
 
-from .sushi_base_operator import SushiBonesOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBonesOperator
 
 
 class SUSHI_CLEANUP_BoneParentToActive(SushiBonesOperator):

@@ -3,7 +3,7 @@ from typing import Dict, List, Set
 import bpy
 from bpy.types import Context, Material, Object
 
-from .sushi_base_operator import SushiBaseOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_RenameUniqueUserMaterials(SushiBaseOperator):

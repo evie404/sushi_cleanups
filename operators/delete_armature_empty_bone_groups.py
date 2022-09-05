@@ -3,7 +3,10 @@ from typing import Dict
 import bpy
 from bpy.types import Object
 
-from .sushi_base_operator import SushiAllArmatureOperator, SushiArmatureOperator
+from sushi_cleanups.operators.sushi_base_operator import (
+    SushiAllArmatureOperator,
+    SushiArmatureOperator,
+)
 
 
 class SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll(SushiAllArmatureOperator):

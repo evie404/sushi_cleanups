@@ -1,7 +1,7 @@
 from bpy.props import BoolProperty
 from bpy.types import AddonPreferences, Context
 
-from .version import ADDON_NAME
+from sushi_cleanups.version import ADDON_NAME
 
 
 class SushiCleanupsAddonPreferences(AddonPreferences):

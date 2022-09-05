@@ -3,7 +3,10 @@ from typing import List, Set
 import bpy
 from bpy.types import Context, MeshUVLoop, MeshUVLoopLayer, Object
 
-from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
+from sushi_cleanups.operators.sushi_base_operator import (
+    SushiAllMeshOperator,
+    SushiMeshOperator,
+)
 
 
 class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):

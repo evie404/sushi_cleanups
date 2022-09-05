@@ -3,7 +3,7 @@ from typing import List
 import bpy
 from bpy.types import Object
 
-from .sushi_base_operator import SushiMeshOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiMeshOperator
 
 
 class SUSHI_CLEANUP_DeleteSameMaterialObjects(SushiMeshOperator):

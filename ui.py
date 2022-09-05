@@ -3,7 +3,7 @@ from typing import Dict, Set
 import bpy
 from bpy.types import Context
 
-from .operators.groups import (
+from sushi_cleanups.operators.groups import (
     BONE_ALL,
     COPY_FROM_TO,
     DELETE_ALL,
@@ -15,9 +15,12 @@ from .operators.groups import (
     SORT_ALL,
     SORT_SELECTED,
 )
-from .operators.sushi_base_operator import SushiBaseOperator, SushiBoneOperator
-from .preferences import SushiCleanupsAddonPreferences
-from .version import ADDON_NAME
+from sushi_cleanups.operators.sushi_base_operator import (
+    SushiBaseOperator,
+    SushiBoneOperator,
+)
+from sushi_cleanups.preferences import SushiCleanupsAddonPreferences
+from sushi_cleanups.version import ADDON_NAME
 
 
 class SushiBasePanel(bpy.types.Panel):

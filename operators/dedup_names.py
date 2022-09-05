@@ -3,7 +3,7 @@ from typing import Dict
 import bpy
 from bpy.types import ID, Context
 
-from .sushi_base_operator import SushiBaseOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_DedupNames(SushiBaseOperator):

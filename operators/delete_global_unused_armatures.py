@@ -3,7 +3,7 @@ from typing import Set
 import bpy
 from bpy.types import Armature, Context
 
-from .sushi_base_operator import SushiBaseOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_DeleteUnusedArmatures(SushiBaseOperator):

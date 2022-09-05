@@ -3,7 +3,7 @@ from typing import Dict
 import bpy
 from bpy.types import FCurve, Object
 
-from .sushi_base_operator import SushiFromToOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiFromToOperator
 
 
 class SUSHI_CLEANUP_CopyCustomPropertiesToSelected(SushiFromToOperator):

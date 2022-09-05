@@ -3,7 +3,10 @@ from typing import Dict
 import bpy
 from bpy.types import Mesh, Object
 
-from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
+from sushi_cleanups.operators.sushi_base_operator import (
+    SushiAllMeshOperator,
+    SushiMeshOperator,
+)
 
 
 class SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll(SushiAllMeshOperator):

@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Context
 
-from .sushi_base_operator import SushiBaseOperator
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_RenameUniqueArmatures(SushiBaseOperator):
