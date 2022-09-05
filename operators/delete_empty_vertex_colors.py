@@ -34,7 +34,7 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
     )
     bl_options = {"UNDO"}
 
-    sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
+    sk_tags = {"SELECTED", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:

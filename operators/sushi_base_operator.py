@@ -20,10 +20,6 @@ class SushiBaseOperator(bpy.types.Operator):
 
         return "NONE"
 
-    @classmethod
-    def button_description(cls) -> str:
-        return cls.bl_label.replace("Delete All ", "").replace("Rename All")
-
 
 class SushiMeshOperator(SushiBaseOperator):
     @classmethod

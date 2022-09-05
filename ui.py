@@ -25,8 +25,18 @@ class SushiBasePanel(bpy.types.Panel):
         for op in self.sk_operators:
             op_map[op.bl_idname] = op
 
-        for op_name in sorted(op_map.keys()):
-            col.operator(op_name, icon=op_map[op_name].icon())
+        for bl_idname in sorted(op_map.keys()):
+            op = op_map[bl_idname]
+            label = (
+                op.bl_label.replace("Delete All ", "")
+                .replace("Rename All", "")
+                .replace("Sort All", "")
+                .replace("Delete ", "")
+                .replace("Rename", "")
+                .replace("Sort", "")
+            )
+
+            col.operator(op.bl_idname, text=label, icon=op.icon())
 
     @classmethod
     def poll(cls, context: Context) -> bool:
