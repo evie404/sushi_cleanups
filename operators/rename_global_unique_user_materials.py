@@ -41,3 +41,7 @@ class SUSHI_CLEANUP_RenameUniqueUserMaterials(SushiBaseOperator):
             material.name = users[0].name
 
         return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.meshes) > 0 and len(bpy.data.materials) > 0

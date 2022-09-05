@@ -44,3 +44,7 @@ class SUSHI_CLEANUP_DeleteEmptyCollections(SushiBaseOperator):
             bpy.data.collections.remove(root)
 
             return
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.collections) > 0

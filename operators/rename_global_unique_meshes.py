@@ -23,3 +23,7 @@ class SUSHI_CLEANUP_RenameUniqueMeshes(SushiBaseOperator):
                 mesh.name = obj.name
 
         return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.meshes) > 0

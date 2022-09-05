@@ -22,3 +22,7 @@ class SUSHI_CLEANUP_DeleteUnusedArmatures(SushiBaseOperator):
                 bpy.data.armatures.remove(armature)
 
         return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.armatures) > 0

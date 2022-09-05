@@ -22,3 +22,7 @@ class SUSHI_CLEANUP_DeleteUnusedMeshes(SushiBaseOperator):
                 bpy.data.meshes.remove(mesh)
 
         return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.meshes) > 0

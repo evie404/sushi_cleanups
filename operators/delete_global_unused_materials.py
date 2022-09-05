@@ -20,3 +20,7 @@ class SUSHI_CLEANUP_DeleteUnusedMaterials(SushiBaseOperator):
                 bpy.data.materials.remove(material)
 
         return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return len(bpy.data.materials) > 0
