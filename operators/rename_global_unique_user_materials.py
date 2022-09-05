@@ -11,7 +11,7 @@ class SUSHI_CLEANUP_RenameUniqueUserMaterials(SushiBaseOperator):
     bl_label = "Rename All Unique Materials"
     bl_description = "Renames materials to their users' name if it only has one user"
 
-    sk_tags = {"ALL", "MESH", "MATERIAL", "UNIQUE", "RENAME"}
+    sk_tags = {"ALL", "MESH", "MATERIAL", "UNIQUE", "RENAME", "DATA"}
 
     def execute(self, context: Context) -> Set[str]:
         material_users: Dict[Material, List[Object]] = {}

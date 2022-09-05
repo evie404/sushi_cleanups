@@ -9,7 +9,7 @@ class SUSHI_CLEANUP_RenameUniqueArmatures(SushiBaseOperator):
     bl_label = "Rename All Unique Armatures"
     bl_description = "Renames armatures to their users' name if it only has one user"
 
-    sk_tags = {"ALL", "ARMATURE", "UNIQUE", "RENAME"}
+    sk_tags = {"ALL", "ARMATURE", "UNIQUE", "RENAME", "DATA"}
 
     # TODO: debug
     def execute(self, context: Context):

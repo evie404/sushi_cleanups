@@ -9,7 +9,7 @@ class SUSHI_CLEANUP_RenameUniqueMeshes(SushiBaseOperator):
     bl_label = "Rename All Unique Meshes"
     bl_description = "Renames meshes to their users' name if it only has one user"
 
-    sk_tags = {"ALL", "MESH", "UNIQUE", "RENAME"}
+    sk_tags = {"ALL", "MESH", "UNIQUE", "RENAME", "DATA"}
 
     def execute(self, context: Context):
         mesh_objs = [obj for obj in bpy.data.objects if obj.type == "MESH"]

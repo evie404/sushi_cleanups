@@ -84,9 +84,12 @@ DELETE_SIMILAR: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SIMILAR" in x.sk_tags and "DELETE" in x.sk_tags
 }
 
-RENAME_ALL: Set[SushiBaseOperator] = {
-    x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "RENAME" in x.sk_tags
+RENAME_ALL_DATA: Set[SushiBaseOperator] = {
+    x
+    for x in ALL_OPERATIONS
+    if "ALL" in x.sk_tags and "RENAME" in x.sk_tags and "DATA" in x.sk_tags
 }
+
 
 RENAME_SELECTED: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "RENAME" in x.sk_tags

@@ -7,7 +7,7 @@ from .operators.groups import (
     DELETE_ALL,
     DELETE_SELECTED,
     DELETE_SIMILAR,
-    RENAME_ALL,
+    RENAME_ALL_DATA,
     RENAME_SELECTED,
     SORT_ALL,
     SORT_SELECTED,
@@ -92,16 +92,16 @@ class SUSHI_CLEANUP_PT_Rename_Selected(SushiBasePanel):
     sk_operators = RENAME_SELECTED
 
 
-class SUSHI_CLEANUP_PT_Rename_All(SushiBasePanel):
+class SUSHI_CLEANUP_PT_Rename_All_Data(SushiBasePanel):
     bl_category = "Sushi Cleanups"
-    bl_label = "Rename All Objects"
-    bl_idname = "SUSHI_CLEANUP_PT_Rename_All"
+    bl_label = "Rename All Data Blocks"
+    bl_idname = "SUSHI_CLEANUP_PT_Rename_All_Data"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_context = "objectmode"
     bl_options = {"DEFAULT_CLOSED"}
 
-    sk_operators = RENAME_ALL
+    sk_operators = RENAME_ALL_DATA
 
 
 class SUSHI_CLEANUP_PT_Sort_Selected(SushiBasePanel):
@@ -132,7 +132,7 @@ UI_CLASSES = [
     SUSHI_CLEANUP_PT_Delete_All,
     SUSHI_CLEANUP_PT_Delete_Selected,
     SUSHI_CLEANUP_PT_Delete_Similar,
-    SUSHI_CLEANUP_PT_Rename_All,
+    SUSHI_CLEANUP_PT_Rename_All_Data,
     SUSHI_CLEANUP_PT_Rename_Selected,
     SUSHI_CLEANUP_PT_Sort_All,
     SUSHI_CLEANUP_PT_Sort_Selected,
