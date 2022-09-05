@@ -39,7 +39,7 @@ from .rename_unique_meshes import SUSHI_CLEANUP_RenameUniqueMeshes
 from .rename_unique_user_materials import SUSHI_CLEANUP_RenameUniqueUserMaterials
 from .sort_all_vertex_groups import SUSHI_CLEANUP_SortVertexGroups
 
-OPERATIONS_ALL: Set[SushiBaseOperator] = {
+ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll,
     SUSHI_CLEANUP_DeleteEmptyCollections,
     SUSHI_CLEANUP_DeleteEmptyUVMapsAll,
@@ -62,4 +62,28 @@ OPERATIONS_ALL: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected,
     SUSHI_CLEANUP_DeleteUnusedUVMapsSelected,
     SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected,
+}
+
+DELETE_ALL: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "DELETE" in x.sk_tags
+}
+
+DELETE_SELECTED: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "DELETE" in x.sk_tags
+}
+
+RENAME_ALL: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "RENAME" in x.sk_tags
+}
+
+RENAME_SELECTED: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "RENAME" in x.sk_tags
+}
+
+SORT_ALL: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "SORT" in x.sk_tags
+}
+
+SORT_SELECTED: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "SORT" in x.sk_tags
 }
