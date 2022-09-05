@@ -32,6 +32,9 @@ class SushiFromToOperator(SushiBaseOperator):
 
     def execute(self, context: Context) -> Set[str]:
         for obj in context.selected_objects:
+            if obj == context.active_object:
+                continue
+
             self.sk_from_to_exec(context.active_object, obj)
 
         return {"FINISHED"}

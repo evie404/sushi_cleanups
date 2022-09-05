@@ -1,7 +1,7 @@
 from typing import Dict
 
 import bpy
-from bpy.types import Object
+from bpy.types import FCurve, Object
 
 from .sushi_base_operator import SushiFromToOperator
 
@@ -14,13 +14,25 @@ class SUSHI_CLEANUP_CopyCustomPropertiesToSelected(SushiFromToOperator):
     )
 
     sk_tags = {"CUSTOM_PROPERTY", "OBJECT", "COPY", "FROM_TO"}
-    sk_obj_type = "Object"
 
     def sk_from_to_exec(self, from_obj: Object, to_obj: Object) -> None:
-        _copy_custom_properties(from_obj, to_obj)
+        _copy_custom_properties(from_obj, to_obj, False)
 
 
-def _copy_custom_properties(from_obj: Object, to_obj: Object) -> None:
+class SUSHI_CLEANUP_CopyCustomPropertiesWithDriversToSelected(SushiFromToOperator):
+    bl_idname = "sushi_cleanup.copy_custom_properties_with_drivers"
+    bl_label = "Copy Custom properties with Drivers"
+    bl_description = "Copies custom properties and associated drivers from the active object to the selected objects"
+
+    sk_tags = {"CUSTOM_PROPERTY", "OBJECT", "COPY", "FROM_TO", "DRIVER"}
+
+    def sk_from_to_exec(self, from_obj: Object, to_obj: Object) -> None:
+        _copy_custom_properties(from_obj, to_obj, True)
+
+
+def _copy_custom_properties(
+    from_obj: Object, to_obj: Object, copy_drivers: bool
+) -> None:
     print(f"[{from_obj.name}] Copying custom properties to {to_obj.name} (Start)")
 
     # for key in from_obj.id_properties_ensure().keys():
@@ -28,7 +40,20 @@ def _copy_custom_properties(from_obj: Object, to_obj: Object) -> None:
     #         continue
 
     from_props = from_obj.id_properties_ensure()
+
+    to_obj.id_properties_ensure().clear()
     to_obj.id_properties_ensure().update(from_props)
+
+    if copy_drivers:
+        for driver in from_obj.animation_data.drivers:
+            driver: FCurve
+            if not driver.data_path.startswith('["'):
+                continue
+
+            if not driver.data_path.endswith('"]'):
+                continue
+
+            to_obj.animation_data.drivers.from_existing(src_driver=driver)
 
     print(f"[{from_obj.name}] Copying custom properties to {to_obj.name} (Finished)")
 

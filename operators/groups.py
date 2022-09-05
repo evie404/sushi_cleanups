@@ -2,6 +2,7 @@ from typing import Set
 
 from sushi_cleanups.operators.copy_object_custom_properties import (
     SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
+    SUSHI_CLEANUP_CopyCustomPropertiesWithDriversToSelected,
 )
 from sushi_cleanups.operators.delete_similar_same_material import (
     SUSHI_CLEANUP_DeleteSameMaterialObjects,
@@ -76,6 +77,7 @@ ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_RenameUniqueUserMaterials,
     SUSHI_CLEANUP_SortVertexGroups,
     SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
+    SUSHI_CLEANUP_CopyCustomPropertiesWithDriversToSelected,
 }
 
 DELETE_ALL: Set[SushiBaseOperator] = {
