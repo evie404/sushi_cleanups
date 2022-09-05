@@ -7,7 +7,7 @@ from bpy.types import Context, Material, Object
 class SUSHI_CLEANUP_RenameUniqueUserMaterials(bpy.types.Operator):
     bl_idname = "sushi_cleanup.rename_unique_user_materials"
     bl_label = "Rename Unique User Materials"
-    bl_description = "Renames materials that only have one user to their user's name."
+    bl_description = "Renames materials that only have one user to their user's name"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

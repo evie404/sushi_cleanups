@@ -9,7 +9,7 @@ from sushi_cleanups.base_operation import SushiBaseOperation
 class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_empty_vertex_groups_all"
     bl_label = "Remove Empty Vertex Groups"
-    bl_description = "Removes vertex groups with no vertices."
+    bl_description = "Removes vertex groups with no vertices"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -23,7 +23,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperation):
 class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_empty_vertex_groups_selected"
     bl_label = "Remove Empty Vertex Groups"
-    bl_description = "Removes vertex groups with no vertices."
+    bl_description = "Removes vertex groups with no vertices"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

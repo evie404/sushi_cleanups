@@ -9,7 +9,7 @@ from sushi_cleanups.base_operation import SushiBaseOperation
 class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_material_slots_all"
     bl_label = "Remove Unused Material Slots"
-    bl_description = "Removes material slots with no vertices."
+    bl_description = "Removes material slots with no vertices"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -22,7 +22,7 @@ class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsAll(SushiBaseOperation):
 class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsSelected(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_material_slots_selected"
     bl_label = "Remove Unused Material Slots"
-    bl_description = "Removes material slots with no vertices."
+    bl_description = "Removes material slots with no vertices"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

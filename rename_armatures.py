@@ -5,7 +5,7 @@ from bpy.types import Context
 class SUSHI_CLEANUP_RenameArmatures(bpy.types.Operator):
     bl_idname = "sushi_cleanup.rename_armatures"
     bl_label = "Rename Armatures"
-    bl_description = "Renames armatures data to use their object name."
+    bl_description = "Renames armatures data to use their object name"
     bl_options = {"UNDO"}
 
     # TODO: debug

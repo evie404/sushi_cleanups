@@ -7,7 +7,7 @@ from bpy.types import Context, Mesh
 class SUSHI_CLEANUP_RemoveUnusedMeshes(bpy.types.Operator):
     bl_idname = "sushi_cleanup.remove_unused_meshes"
     bl_label = "Remove Unused Meshes"
-    bl_description = "Removes meshes with no users."
+    bl_description = "Removes meshes with no users"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

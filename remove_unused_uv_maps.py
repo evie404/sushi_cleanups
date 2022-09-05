@@ -9,7 +9,7 @@ from sushi_cleanups.base_operation import SushiBaseOperation
 class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_uv_maps_all"
     bl_label = "[Buggy] Remove Unused UV Maps"
-    bl_description = "Removes unused UV maps."
+    bl_description = "Removes unused UV maps"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -23,7 +23,7 @@ class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperation):
 class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_uv_maps_selected"
     bl_label = "[Buggy] Remove Unused UV Maps"
-    bl_description = "Removes unused UV maps."
+    bl_description = "Removes unused UV maps"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

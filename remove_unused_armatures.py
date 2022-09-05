@@ -7,7 +7,7 @@ from bpy.types import Armature, Context
 class SUSHI_CLEANUP_RemoveUnusedArmatures(bpy.types.Operator):
     bl_idname = "sushi_cleanup.remove_unused_armatures"
     bl_label = "Remove Unused Armatures"
-    bl_description = "Removes armatures with no users."
+    bl_description = "Removes armatures with no users"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

@@ -9,7 +9,7 @@ from sushi_cleanups.base_operation import SushiBaseOperation
 class SUSHI_CLEANUP_RemoveUnusedVertexColorsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_vertex_colors_all"
     bl_label = "Remove Unused Vertex Colors"
-    bl_description = "Removes non-active vertex colors."
+    bl_description = "Removes non-active vertex colors"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -24,7 +24,7 @@ class SUSHI_CLEANUP_RemoveUnusedVertexColorsAll(SushiBaseOperation):
 class SUSHI_CLEANUP_RemoveUnusedVertexColorsSelected(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_vertex_colors_selected"
     bl_label = "Remove Unused Vertex Colors"
-    bl_description = "Removes non-active vertex colors."
+    bl_description = "Removes non-active vertex colors"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
