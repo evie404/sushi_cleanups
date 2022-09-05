@@ -16,6 +16,10 @@ class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
     bl_options = {"DEFAULT_CLOSED"}
 
     def draw(self, context: Context) -> None:
+        ob = bpy.context.active_object
+        if not ob:
+            return
+
         col = self.layout.column()
 
         op_map: Dict[str, Operator] = {}
