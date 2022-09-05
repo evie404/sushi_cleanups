@@ -7,7 +7,10 @@ from sushi_cleanups.remove_empty_bone_groups import (
     SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected,
 )
 from sushi_cleanups.remove_empty_collections import SUSHI_CLEANUP_RemoveEmptyCollections
-from sushi_cleanups.remove_empty_uv_maps import SUSHI_CLEANUP_RemoveEmptyUVMaps
+from sushi_cleanups.remove_empty_uv_maps import (
+    SUSHI_CLEANUP_RemoveEmptyUVMapsAll,
+    SUSHI_CLEANUP_RemoveEmptyUVMapsSelected,
+)
 from sushi_cleanups.remove_empty_vertex_colors import (
     SUSHI_CLEANUP_RemoveEmptyVertexColorsAll,
     SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected,
@@ -35,7 +38,7 @@ OPERATIONS_ALL: Set[Operator] = {
     SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll,
     SUSHI_CLEANUP_RemoveEmptyCollections,
     SUSHI_CLEANUP_RemoveEmptyVertexColorsAll,
-    SUSHI_CLEANUP_RemoveEmptyUVMaps,
+    SUSHI_CLEANUP_RemoveEmptyUVMapsAll,
     SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll,
     SUSHI_CLEANUP_RemoveUnusedVertexColors,
     SUSHI_CLEANUP_RemoveUnusedMaterialSlots,
@@ -51,4 +54,5 @@ OPERATIONS_SELECTED: Set[Operator] = {
     SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected,
     SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected,
     SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected,
+    SUSHI_CLEANUP_RemoveEmptyUVMapsSelected,
 }
