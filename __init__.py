@@ -3,7 +3,7 @@ bl_info = {
     "author": "SushiKitty",
     "version": (0, 0, 1),
     "blender": (2, 92, 0),
-    "description": "Small scripts to clean up data and objects",
+    "description": "Scripts to clean up data and objects. Useful when cleaning up imported data from other programs.",
     "location": "View3D > Sidebar > Sushi Cleanups",
     "wiki_url": "",
     "tracker_url": "",
