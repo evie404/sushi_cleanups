@@ -48,4 +48,4 @@ class SUSHI_CLEANUP_PT_All(bpy.types.Panel):
             col.operator(op_name)
 
 
-UI_CLASSES = {SUSHI_CLEANUP_PT_All, SUSHI_CLEANUP_PT_Selected}
+UI_CLASSES = [SUSHI_CLEANUP_PT_All, SUSHI_CLEANUP_PT_Selected]
