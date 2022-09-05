@@ -31,12 +31,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiMeshOperator):
     sk_tags = {"SELECTED", "VERTEX_GROUP", "EMPTY", "MESH", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_mesh(context)
-        if err:
-            return err
-
-        obj = bpy.context.active_object
-        _remove_empty_vertex_groups(obj)
+        _remove_empty_vertex_groups(bpy.context.active_object)
 
         return {"FINISHED"}
 

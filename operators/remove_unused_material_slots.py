@@ -30,10 +30,6 @@ class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsSelected(SushiMeshOperator):
     sk_tags = {"SELECTED", "MESH", "MATERIAL_SLOT" "UNUSED", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_mesh(context)
-        if err:
-            return err
-
         _remove_unused_material_slots(bpy.context.active_object)
 
         return {"FINISHED"}

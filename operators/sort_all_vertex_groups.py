@@ -3,8 +3,10 @@ from typing import Set
 import bpy
 from bpy.types import Context, Object
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_SortVertexGroups(bpy.types.Operator):
+
+class SUSHI_CLEANUP_SortVertexGroups(SushiBaseOperator):
     bl_idname = "sushi_cleanup.sort_vertex_groups"
     bl_label = "Sort All Vertex Groups By Name"
     bl_description = "Sort vertex groups by names for all objects"

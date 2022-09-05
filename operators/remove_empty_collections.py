@@ -3,8 +3,10 @@ from typing import Optional, Set
 import bpy
 from bpy.types import Collection, Context
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RemoveEmptyCollections(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RemoveEmptyCollections(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_collections"
     bl_label = "Remove Empty Collections"
     bl_description = "Removes collections with no children and collapses collections with only one collection children"

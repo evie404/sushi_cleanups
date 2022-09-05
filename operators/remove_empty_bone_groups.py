@@ -31,10 +31,6 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiArmatureOperator):
     sk_tags = {"SELECTED", "BONE_GROUP", "EMPTY", "ARMATURE", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_armature(context)
-        if err:
-            return err
-
         _remove_empty_bone_groups(bpy.context.active_object)
 
         return {"FINISHED"}

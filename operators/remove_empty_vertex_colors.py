@@ -38,12 +38,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiMeshOperator):
 
     # TODO: debug
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_mesh(context)
-        if err:
-            return err
-
-        obj = bpy.context.active_object
-        _remove_vertex_colors(obj)
+        _remove_vertex_colors(bpy.context.active_object)
 
         return {"FINISHED"}
 

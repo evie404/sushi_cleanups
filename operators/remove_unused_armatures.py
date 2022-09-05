@@ -3,8 +3,10 @@ from typing import Set
 import bpy
 from bpy.types import Armature, Context
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RemoveUnusedArmatures(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RemoveUnusedArmatures(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_unused_armatures"
     bl_label = "Remove All Unused Armatures"
     bl_description = "Removes armatures with no users"

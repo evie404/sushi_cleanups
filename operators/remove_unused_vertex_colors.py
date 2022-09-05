@@ -32,10 +32,6 @@ class SUSHI_CLEANUP_RemoveUnusedVertexColorsSelected(SushiMeshOperator):
     sk_tags = {"SELECTED", "MESH", "UNUSED", "VERTEX_COLOR", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_mesh(context)
-        if err:
-            return err
-
         _remove_unused_vertex_colors(bpy.context.active_object)
 
         return {"FINISHED"}

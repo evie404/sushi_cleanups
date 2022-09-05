@@ -3,8 +3,10 @@ from typing import Dict, List, Set
 import bpy
 from bpy.types import Context, Material, Object
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RenameUniqueUserMaterials(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RenameUniqueUserMaterials(SushiBaseOperator):
     bl_idname = "sushi_cleanup.rename_unique_user_materials"
     bl_label = "Rename All Single-User Materials"
     bl_description = "Renames materials that only have one user to their user's name"

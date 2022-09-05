@@ -1,8 +1,10 @@
 import bpy
 from bpy.types import Context, Mesh, Object
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RenameUniqueMeshes(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RenameUniqueMeshes(SushiBaseOperator):
     bl_idname = "sushi_cleanup.rename_unique_meshes"
     bl_label = "Rename All Single-User Meshes"
     bl_description = "Renames meshes data to use their object name"

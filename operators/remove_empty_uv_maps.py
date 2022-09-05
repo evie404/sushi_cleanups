@@ -34,10 +34,6 @@ class SUSHI_CLEANUP_RemoveEmptyUVMapsSelected(SushiMeshOperator):
     sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "REMOVE"}
 
     def execute(self, context: Context) -> Set[str]:
-        err = self.check_for_mesh(context)
-        if err:
-            return err
-
         _remove_empty_uv_maps(bpy.context.active_object)
 
         return {"FINISHED"}

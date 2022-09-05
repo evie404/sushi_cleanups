@@ -3,8 +3,10 @@ from typing import Set
 import bpy
 from bpy.types import Context, Mesh
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RemoveUnusedMeshes(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RemoveUnusedMeshes(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_unused_meshes"
     bl_label = "Remove All Unused Meshes"
     bl_description = "Removes meshes with no users"

@@ -3,8 +3,10 @@ from typing import Set
 import bpy
 from bpy.types import Context
 
+from .sushi_base_operator import SushiBaseOperator
 
-class SUSHI_CLEANUP_RemoveUnusedMaterials(bpy.types.Operator):
+
+class SUSHI_CLEANUP_RemoveUnusedMaterials(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_unused_materials"
     bl_label = "Remove All Unused Materials"
     bl_description = "Removes materials with no users"
