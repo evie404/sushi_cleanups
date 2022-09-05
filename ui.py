@@ -16,10 +16,6 @@ class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
     bl_options = {"DEFAULT_CLOSED"}
 
     def draw(self, context: Context) -> None:
-        ob = bpy.context.active_object
-        if not ob:
-            return
-
         col = self.layout.column()
 
         op_map: Dict[str, Operator] = {}
@@ -29,6 +25,10 @@ class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
 
         for op_name in sorted(op_map.keys()):
             col.operator(op_name)
+
+    # @classmethod
+    # def poll(cls, context):
+    #     return context.object and context.object.type in {"MESH", "ARMATURE"}
 
 
 class SUSHI_CLEANUP_PT_All(bpy.types.Panel):

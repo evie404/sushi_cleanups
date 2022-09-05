@@ -3,7 +3,7 @@ from typing import List, Set
 import bpy
 from bpy.types import Context, Mesh, MeshLoopColor, MeshLoopColorLayer, Object
 
-from .sushi_base_operator import SushiBaseOperator
+from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
 class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
@@ -26,7 +26,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiBaseOperator):
+class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_colors_selected"
     bl_label = "[Buggy] Remove Empty Vertex Colors"
     bl_description = (

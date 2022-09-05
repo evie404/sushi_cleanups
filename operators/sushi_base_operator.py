@@ -36,3 +36,15 @@ class SushiBaseOperator(bpy.types.Operator):
             return {"CANCELLED"}
 
         return None
+
+
+class SushiMeshOperator(SushiBaseOperator):
+    @classmethod
+    def poll(cls, context):
+        return context.object and context.object.type == "MESH"
+
+
+class SushiArmatureOperator(SushiBaseOperator):
+    @classmethod
+    def poll(cls, context):
+        return context.object and context.object.type == "ARMATURE"

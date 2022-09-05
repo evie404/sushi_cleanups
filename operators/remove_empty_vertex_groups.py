@@ -3,7 +3,7 @@ from typing import Dict, Set
 import bpy
 from bpy.types import Context, Mesh, Object
 
-from .sushi_base_operator import SushiBaseOperator
+from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
 class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperator):
@@ -22,7 +22,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperator):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiBaseOperator):
+class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_groups_selected"
     bl_label = "Remove Empty Vertex Groups"
     bl_description = "Removes vertex groups with no vertices for the selected object"

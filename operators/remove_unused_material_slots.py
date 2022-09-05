@@ -3,7 +3,7 @@ from typing import Set
 import bpy
 from bpy.types import Context, Object
 
-from .sushi_base_operator import SushiBaseOperator
+from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
 class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsAll(SushiBaseOperator):
@@ -21,7 +21,7 @@ class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsAll(SushiBaseOperator):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsSelected(SushiBaseOperator):
+class SUSHI_CLEANUP_RemoveUnusedMaterialSlotsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.remove_unused_material_slots_selected"
     bl_label = "Remove Unused Material Slots"
     bl_description = "Removes material slots with no vertices for the selected object"

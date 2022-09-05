@@ -3,7 +3,7 @@ from typing import List, Set
 import bpy
 from bpy.types import Context, MeshUVLoopLayer, Object
 
-from .sushi_base_operator import SushiBaseOperator
+from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
 
 
 class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperator):
@@ -22,7 +22,7 @@ class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperator):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiBaseOperator):
+class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.remove_unused_uv_maps_selected"
     bl_label = "Remove Unused UV Maps"
     bl_description = "Removes unused UV maps for the selected object"
