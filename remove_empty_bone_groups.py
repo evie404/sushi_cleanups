@@ -3,10 +3,10 @@ from typing import Dict, Set
 import bpy
 from bpy.types import Context, Object
 
-from .base_operation import SushiBaseOperation
+from .sushi_base_operator import SushiBaseOperator
 
 
-class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_bone_groups_selected"
     bl_label = "Remove Empty Bone Groups"
     bl_description = "Removes bone groups with no vertices"
@@ -22,7 +22,7 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperation):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_bone_groups_all"
     bl_label = "Remove All Empty Bone Groups"
     bl_description = "Removes bone groups with no vertices"

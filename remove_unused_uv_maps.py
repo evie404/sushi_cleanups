@@ -3,10 +3,10 @@ from typing import List, Set
 import bpy
 from bpy.types import Context, MeshUVLoopLayer, Object
 
-from sushi_cleanups.base_operation import SushiBaseOperation
+from sushi_cleanups.sushi_base_operator import SushiBaseOperator
 
 
-class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_unused_uv_maps_all"
     bl_label = "Remove All Unused UV Maps"
     bl_description = "Removes unused UV maps"
@@ -20,7 +20,7 @@ class SUSHI_CLEANUP_RemoveUnusedUVMapsAll(SushiBaseOperation):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveUnusedUVMapsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_unused_uv_maps_selected"
     bl_label = "Remove Unused UV Maps"
     bl_description = "Removes unused UV maps"

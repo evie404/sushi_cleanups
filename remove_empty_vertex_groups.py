@@ -3,10 +3,10 @@ from typing import Dict, Set
 import bpy
 from bpy.types import Context, Mesh, Object
 
-from sushi_cleanups.base_operation import SushiBaseOperation
+from sushi_cleanups.sushi_base_operator import SushiBaseOperator
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_groups_all"
     bl_label = "Remove All Empty Vertex Groups"
     bl_description = "Removes vertex groups with no vertices"
@@ -20,7 +20,7 @@ class SUSHI_CLEANUP_RemoveEmptyVertexGroupsAll(SushiBaseOperation):
         return {"FINISHED"}
 
 
-class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiBaseOperation):
+class SUSHI_CLEANUP_RemoveEmptyVertexGroupsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_groups_selected"
     bl_label = "Remove Empty Vertex Groups"
     bl_description = "Removes vertex groups with no vertices"
