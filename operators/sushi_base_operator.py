@@ -8,14 +8,21 @@ class SushiBaseOperator(bpy.types.Operator):
     sk_tags: Set[str]
 
     @classmethod
-    def icon(cls) -> Optional[str]:
+    def icon(cls) -> str:
         if "REMOVE" in cls.sk_tags:
             return "TRASH"
 
         if "RENAME" in cls.sk_tags:
             return "GREASEPENCIL"
 
-        return None
+        if "SORT" in cls.sk_tags:
+            return "SORTSIZE"
+
+        return "NONE"
+
+    @classmethod
+    def button_description(cls) -> str:
+        return cls.bl_label.replace("Remove All ", "").replace("Rename All")
 
 
 class SushiMeshOperator(SushiBaseOperator):
