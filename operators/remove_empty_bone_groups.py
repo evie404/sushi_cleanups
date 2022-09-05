@@ -6,10 +6,24 @@ from bpy.types import Context, Object
 from .sushi_base_operator import SushiBaseOperator
 
 
+class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperator):
+    bl_idname = "sushi_cleanup.remove_empty_bone_groups_all"
+    bl_label = "Remove All Empty Bone Groups"
+    bl_description = "Removes bone groups with no vertices for all objects"
+    bl_options = {"UNDO"}
+
+    def execute(self, context: Context) -> Set[str]:
+        for obj in bpy.data.objects:
+            if obj.type == "ARMATURE":
+                _remove_empty_bone_groups(obj)
+
+        return {"FINISHED"}
+
+
 class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_bone_groups_selected"
     bl_label = "Remove Empty Bone Groups"
-    bl_description = "Removes bone groups with no vertices"
+    bl_description = "Removes bone groups with no vertices for the selected object"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -18,20 +32,6 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperator):
             return err
 
         _remove_empty_bone_groups(bpy.context.active_object)
-
-        return {"FINISHED"}
-
-
-class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperator):
-    bl_idname = "sushi_cleanup.remove_empty_bone_groups_all"
-    bl_label = "Remove All Empty Bone Groups"
-    bl_description = "Removes bone groups with no vertices"
-    bl_options = {"UNDO"}
-
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            if obj.type == "ARMATURE":
-                _remove_empty_bone_groups(obj)
 
         return {"FINISHED"}
 

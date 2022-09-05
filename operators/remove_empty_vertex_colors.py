@@ -9,7 +9,7 @@ from .sushi_base_operator import SushiBaseOperator
 class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_colors_all"
     bl_label = "[Buggy] Remove All Empty Vertex Colors"
-    bl_description = "Removes vertex colors with only default colors"
+    bl_description = "Removes vertex colors with only default colors for all objects"
     bl_options = {"UNDO"}
 
     # TODO: debug
@@ -27,7 +27,9 @@ class SUSHI_CLEANUP_RemoveEmptyVertexColorsAll(SushiBaseOperator):
 class SUSHI_CLEANUP_RemoveEmptyVertexColorsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_vertex_colors_selected"
     bl_label = "[Buggy] Remove Empty Vertex Colors"
-    bl_description = "Removes vertex colors with only default colors"
+    bl_description = (
+        "Removes vertex colors with only default colors for the selected object"
+    )
     bl_options = {"UNDO"}
 
     # TODO: debug

@@ -9,7 +9,7 @@ from .sushi_base_operator import SushiBaseOperator
 class SUSHI_CLEANUP_RemoveEmptyUVMapsAll(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_uv_maps_all"
     bl_label = "Remove All Empty UV Maps"
-    bl_description = "Removes UV maps with only default coordinates"
+    bl_description = "Removes UV maps with only default coordinates for all objects"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
@@ -24,7 +24,9 @@ class SUSHI_CLEANUP_RemoveEmptyUVMapsAll(SushiBaseOperator):
 class SUSHI_CLEANUP_RemoveEmptyUVMapsSelected(SushiBaseOperator):
     bl_idname = "sushi_cleanup.remove_empty_uv_maps_selected"
     bl_label = "Remove Empty UV Maps"
-    bl_description = "Removes UV maps with only default coordinates"
+    bl_description = (
+        "Removes UV maps with only default coordinates for the selected object"
+    )
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:

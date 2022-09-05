@@ -7,7 +7,7 @@ from bpy.types import Context, Object
 class SUSHI_CLEANUP_SortVertexGroups(bpy.types.Operator):
     bl_idname = "sushi_cleanup.sort_vertex_groups"
     bl_label = "Sort All Vertex Groups By Name"
-    bl_description = "Sort vertex groups by names"
+    bl_description = "Sort vertex groups by names for all objects"
     bl_options = {"UNDO"}
 
     def execute(self, context: Context) -> Set[str]:
