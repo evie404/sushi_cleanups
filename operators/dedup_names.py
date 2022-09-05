@@ -7,8 +7,14 @@ from .sushi_base_operator import SushiBaseOperator
 class SUSHI_CLEANUP_DedupNames(SushiBaseOperator):
     bl_idname = "sushi_cleanup.dedup_names"
     bl_label = "Dedup All Names"
-    bl_description = "Renames all objects/data blocks if they are the only instance of the same name.\nCurrently works for objects, collections, mesh data, armature data, and material data"
-
+    bl_description = "\n".join(
+        [
+            "Renames all objects/data blocks if they are the only instance of the same name.",
+            "Currently works for objects, collections, mesh, armature, and material data.",
+            "",
+            "Example: 'Sushi.002' renamed to 'Sushi' if it is the only object named 'Sushi.xxx'",
+        ]
+    )
     sk_tags = {"ALL", "RENAME"}
 
     # TODO: debug

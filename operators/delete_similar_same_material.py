@@ -9,7 +9,13 @@ from .sushi_base_operator import SushiMeshOperator
 class SUSHI_CLEANUP_DeleteSameMaterialObjects(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_objects_of_same_material"
     bl_label = "Delete Objects with same Material"
-    bl_description = "Delete Objects that uses Selected Mesh's Materials"
+    bl_description = "\n".join(
+        [
+            "Delete all objects that uses the selected mesh's materials in the same order.",
+            "",
+            "Requires material slots to be in the same order but does not require the same vertices for each slot",
+        ]
+    )
 
     sk_tags = {"SIMILAR", "MESH", "DELETE"}
 
