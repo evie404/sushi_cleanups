@@ -1,4 +1,4 @@
-from typing import Dict, Optional, Set
+from typing import Optional, Set
 
 import bpy
 from bpy.types import Collection, Context

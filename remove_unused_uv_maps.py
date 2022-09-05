@@ -1,7 +1,7 @@
 from typing import List, Set
 
 import bpy
-from bpy.types import Context, MeshUVLoop, MeshUVLoopLayer, Object
+from bpy.types import Context, MeshUVLoopLayer, Object
 
 
 class SUSHI_CLEANUP_RemoveUnusedUVMaps(bpy.types.Operator):

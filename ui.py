@@ -6,10 +6,6 @@ from bpy.types import Context, Operator
 from sushi_cleanups.operations import OPERATIONS
 
 
-def _comp_bl_idname(a: Operator, b: Operator) -> int:
-    return a.bl_idname.__gt__(b.bl_idname)
-
-
 class SUSHI_CLEANUP_PT_UI(bpy.types.Panel):
     bl_category = "Sushi Cleanups"
     bl_label = "Cleanups"
