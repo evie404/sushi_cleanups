@@ -4,6 +4,7 @@ import bpy
 from bpy.types import Context
 
 from .operators.groups import (
+    COPY_FROM_TO,
     DELETE_ALL,
     DELETE_SELECTED,
     DELETE_SIMILAR,
@@ -154,6 +155,18 @@ class SUSHI_CLEANUP_PT_Sort_All(SushiBasePanel):
     sk_operators = SORT_ALL
 
 
+class SUSHI_CLEANUP_PT_Copy_From_To(SushiBasePanel):
+    bl_category = "Sushi Cleanups"
+    bl_label = "Copy to Selected Objects"
+    bl_idname = "SUSHI_CLEANUP_PT_Copy_From_To"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_context = "objectmode"
+    bl_options = {"DEFAULT_CLOSED"}
+
+    sk_operators = COPY_FROM_TO
+
+
 UI_CLASSES = [
     SUSHI_CLEANUP_PT_Delete_All,
     SUSHI_CLEANUP_PT_Delete_Selected,
@@ -163,4 +176,5 @@ UI_CLASSES = [
     SUSHI_CLEANUP_PT_Rename_Selected,
     SUSHI_CLEANUP_PT_Sort_All,
     SUSHI_CLEANUP_PT_Sort_Selected,
+    SUSHI_CLEANUP_PT_Copy_From_To,
 ]

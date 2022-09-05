@@ -1,4 +1,4 @@
-from typing import Callable, Optional, Set
+from typing import Callable, Set
 
 import bpy
 from bpy.types import Context, Object
@@ -20,7 +20,25 @@ class SushiBaseOperator(bpy.types.Operator):
         if "SORT" in cls.sk_tags:
             return "SORTSIZE"
 
+        if "COPY" in cls.sk_tags:
+            return "DUPLICATE"
+
         return "NONE"
+
+
+class SushiFromToOperator(SushiBaseOperator):
+    sk_obj_type: str
+    sk_from_to_exec: Callable[[Object, Object], None]
+
+    def execute(self, context: Context) -> Set[str]:
+        for obj in context.selected_objects:
+            self.sk_from_to_exec(context.active_object, obj)
+
+        return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context):
+        return context.active_object and len(context.selected_objects) > 1
 
 
 class SushiAllOperator(SushiBaseOperator):

@@ -1,5 +1,8 @@
 from typing import Set
 
+from sushi_cleanups.operators.copy_object_custom_properties import (
+    SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
+)
 from sushi_cleanups.operators.delete_similar_same_material import (
     SUSHI_CLEANUP_DeleteSameMaterialObjects,
 )
@@ -72,6 +75,7 @@ ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_RenameUniqueMeshes,
     SUSHI_CLEANUP_RenameUniqueUserMaterials,
     SUSHI_CLEANUP_SortVertexGroups,
+    SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
 }
 
 DELETE_ALL: Set[SushiBaseOperator] = {
@@ -109,4 +113,8 @@ SORT_ALL: Set[SushiBaseOperator] = {
 
 SORT_SELECTED: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "SORT" in x.sk_tags
+}
+
+COPY_FROM_TO: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "COPY" in x.sk_tags and "FROM_TO" in x.sk_tags
 }
