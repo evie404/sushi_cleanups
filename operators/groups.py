@@ -65,6 +65,14 @@ from sushi_cleanups.operators.delete_similar_same_material import (
 from sushi_cleanups.operators.delete_similar_same_mesh import (
     SUSHI_CLEANUP_DeleteSameMeshObjects,
 )
+from sushi_cleanups.operators.hide_all_armatures import (
+    SUSHI_CLEANUP_HideAllArmatures,
+    SUSHI_CLEANUP_HideAllArmaturesExceptActive,
+)
+from sushi_cleanups.operators.hide_all_empties import (
+    SUSHI_CLEANUP_HideAllEmpties,
+    SUSHI_CLEANUP_HideAllEmptiesExceptActive,
+)
 from sushi_cleanups.operators.rename_global_unique_armatures import (
     SUSHI_CLEANUP_RenameUniqueArmatures,
 )
@@ -113,6 +121,10 @@ ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_BoneAlignConnectParentsHead,
     SUSHI_CLEANUP_BonePrintDict,
     SUSHI_CLEANUP_BonePrintList,
+    SUSHI_CLEANUP_HideAllArmatures,
+    SUSHI_CLEANUP_HideAllArmaturesExceptActive,
+    SUSHI_CLEANUP_HideAllEmpties,
+    SUSHI_CLEANUP_HideAllEmptiesExceptActive,
 }
 
 DELETE_ALL: Set[SushiBaseOperator] = {
@@ -157,3 +169,8 @@ COPY_FROM_TO: Set[SushiBaseOperator] = {
 }
 
 BONE_ALL: Set[SushiBaseOperator] = {x for x in ALL_OPERATIONS if "BONE" in x.sk_tags}
+
+
+HIDE_ALL: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "HIDE" in x.sk_tags
+}

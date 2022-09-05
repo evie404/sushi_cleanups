@@ -9,16 +9,14 @@ from sushi_cleanups.operators.groups import (
     DELETE_ALL,
     DELETE_SELECTED,
     DELETE_SIMILAR,
+    HIDE_ALL,
     RENAME_ALL,
     RENAME_ALL_DATA,
     RENAME_SELECTED,
     SORT_ALL,
     SORT_SELECTED,
 )
-from sushi_cleanups.operators.sushi_base_operator import (
-    SushiBaseOperator,
-    SushiBoneOperator,
-)
+from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 from sushi_cleanups.preferences import SushiCleanupsAddonPreferences
 from sushi_cleanups.version import ADDON_NAME
 
@@ -159,6 +157,18 @@ class SUSHI_CLEANUP_PT_Sort_All(SushiBasePanel):
     sk_operators = SORT_ALL
 
 
+class SUSHI_CLEANUP_PT_Hide_All(SushiBasePanel):
+    bl_category = "Sushi Cleanups"
+    bl_label = "Hide Globally"
+    bl_idname = "SUSHI_CLEANUP_PT_Hide_All"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_context = "objectmode"
+    bl_options = {"DEFAULT_CLOSED"}
+
+    sk_operators = HIDE_ALL
+
+
 class SUSHI_CLEANUP_PT_Copy_From_To(SushiBasePanel):
     bl_category = "Sushi Cleanups"
     bl_label = "Copy to Selected Objects"
@@ -197,4 +207,5 @@ UI_CLASSES = [
     SUSHI_CLEANUP_PT_Sort_All,
     SUSHI_CLEANUP_PT_Sort_Selected,
     SUSHI_CLEANUP_PT_Copy_From_To,
+    SUSHI_CLEANUP_PT_Hide_All,
 ]
