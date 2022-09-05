@@ -1,9 +1,10 @@
 from typing import Dict
 
 import bpy
-from bpy.types import Context, Operator
+from bpy.types import Context
 
 from .operations import OPERATIONS_ALL, OPERATIONS_SELECTED
+from .operators.sushi_base_operator import SushiBaseOperator
 
 
 class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
@@ -18,13 +19,13 @@ class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
     def draw(self, context: Context) -> None:
         col = self.layout.column()
 
-        op_map: Dict[str, Operator] = {}
+        op_map: Dict[str, SushiBaseOperator] = {}
 
         for op in OPERATIONS_SELECTED:
             op_map[op.bl_idname] = op
 
         for op_name in sorted(op_map.keys()):
-            col.operator(op_name)
+            col.operator(op_name, icon=op_map[op_name].icon())
 
     # @classmethod
     # def poll(cls, context):
@@ -43,13 +44,13 @@ class SUSHI_CLEANUP_PT_All(bpy.types.Panel):
     def draw(self, context: Context) -> None:
         col = self.layout.column()
 
-        op_map: Dict[str, Operator] = {}
+        op_map: Dict[str, SushiBaseOperator] = {}
 
         for op in OPERATIONS_ALL:
             op_map[op.bl_idname] = op
 
         for op_name in sorted(op_map.keys()):
-            col.operator(op_name)
+            col.operator(op_name, icon=op_map[op_name].icon())
 
 
 UI_CLASSES = [SUSHI_CLEANUP_PT_All, SUSHI_CLEANUP_PT_Selected]
