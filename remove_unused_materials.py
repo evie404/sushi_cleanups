@@ -6,7 +6,7 @@ from bpy.types import Context
 
 class SUSHI_CLEANUP_RemoveUnusedMaterials(bpy.types.Operator):
     bl_idname = "sushi_cleanup.remove_unused_materials"
-    bl_label = "Remove Unused Materials"
+    bl_label = "Remove All Unused Materials"
     bl_description = "Removes materials with no users"
     bl_options = {"UNDO"}
 

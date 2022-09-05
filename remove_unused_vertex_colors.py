@@ -8,7 +8,7 @@ from sushi_cleanups.base_operation import SushiBaseOperation
 
 class SUSHI_CLEANUP_RemoveUnusedVertexColorsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_unused_vertex_colors_all"
-    bl_label = "Remove Unused Vertex Colors"
+    bl_label = "Remove All Unused Vertex Colors"
     bl_description = "Removes non-active vertex colors"
     bl_options = {"UNDO"}
 

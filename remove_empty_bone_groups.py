@@ -24,7 +24,7 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsSelected(SushiBaseOperation):
 
 class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperation):
     bl_idname = "sushi_cleanup.remove_empty_bone_groups_all"
-    bl_label = "Remove Empty Bone Groups"
+    bl_label = "Remove All Empty Bone Groups"
     bl_description = "Removes bone groups with no vertices"
     bl_options = {"UNDO"}
 

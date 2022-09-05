@@ -34,8 +34,8 @@ from sushi_cleanups.remove_unused_vertex_colors import (
     SUSHI_CLEANUP_RemoveUnusedVertexColorsAll,
     SUSHI_CLEANUP_RemoveUnusedVertexColorsSelected,
 )
-from sushi_cleanups.rename_armatures import SUSHI_CLEANUP_RenameArmatures
-from sushi_cleanups.rename_meshes import SUSHI_CLEANUP_RenameMeshes
+from sushi_cleanups.rename_unique_armatures import SUSHI_CLEANUP_RenameUniqueArmatures
+from sushi_cleanups.rename_unique_meshes import SUSHI_CLEANUP_RenameUniqueMeshes
 from sushi_cleanups.rename_unique_user_materials import (
     SUSHI_CLEANUP_RenameUniqueUserMaterials,
 )
@@ -53,8 +53,8 @@ OPERATIONS_ALL: Set[Operator] = {
     SUSHI_CLEANUP_RemoveUnusedMeshes,
     SUSHI_CLEANUP_RemoveUnusedVertexColorsAll,
     SUSHI_CLEANUP_RemoveUnusedUVMapsAll,
-    SUSHI_CLEANUP_RenameArmatures,
-    SUSHI_CLEANUP_RenameMeshes,
+    SUSHI_CLEANUP_RenameUniqueArmatures,
+    SUSHI_CLEANUP_RenameUniqueMeshes,
     SUSHI_CLEANUP_RenameUniqueUserMaterials,
     SUSHI_CLEANUP_SortVertexGroups,
 }
