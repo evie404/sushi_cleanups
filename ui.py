@@ -70,7 +70,7 @@ class SUSHI_CLEANUP_PT_Delete_Selected(SushiBasePanel):
 
 class SUSHI_CLEANUP_PT_Delete_All(SushiBasePanel):
     bl_category = "Sushi Cleanups"
-    bl_label = "Delete from All Objects"
+    bl_label = "Delete globally"
     bl_idname = "SUSHI_CLEANUP_PT_Delete_All"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"

@@ -9,7 +9,7 @@ from .sushi_base_operator import SushiBaseOperator
 class SUSHI_CLEANUP_DeleteUnusedArmatures(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_unused_armatures"
     bl_label = "Delete All Unused Armatures"
-    bl_description = "Deletes armatures with no users"
+    bl_description = "Deletes armature data with no users"
 
     sk_tags = {"ALL", "ARMATURE", "UNUSED", "DELETE"}
 

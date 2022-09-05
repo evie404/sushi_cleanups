@@ -9,7 +9,7 @@ from .sushi_base_operator import SushiBaseOperator
 class SUSHI_CLEANUP_DeleteUnusedMeshes(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_unused_meshes"
     bl_label = "Delete All Unused Meshes"
-    bl_description = "Deletes meshes with no users"
+    bl_description = "Deletes mesh data with no users"
 
     sk_tags = {"ALL", "MESH", "UNUSED", "DELETE"}
 
