@@ -15,6 +15,12 @@ class SUSHI_CLEANUP_SortVertexGroups(SushiAllMeshOperator):
         if len(obj.vertex_groups) < 1:
             return
 
+        previously_hidden = False
+
+        if obj.hide_viewport:
+            obj.hide_viewport = False
+            previously_hidden = True
+
         bpy.ops.object.vertex_group_sort(
             {
                 "active_object": obj,
@@ -24,3 +30,6 @@ class SUSHI_CLEANUP_SortVertexGroups(SushiAllMeshOperator):
                 "selected_objects": [obj],
             }
         )
+
+        if previously_hidden:
+            obj.hide_viewport = True
