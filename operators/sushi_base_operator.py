@@ -1,7 +1,7 @@
 from typing import Callable, Set
 
 import bpy
-from bpy.types import Context, Object
+from bpy.types import Context, EditBone, Object
 
 
 class SushiBaseOperator(bpy.types.Operator):
@@ -22,6 +22,9 @@ class SushiBaseOperator(bpy.types.Operator):
 
         if "COPY" in cls.sk_tags:
             return "DUPLICATE"
+
+        if "BONE" in cls.sk_tags:
+            return "BONE_DATA"
 
         return "NONE"
 
@@ -93,3 +96,43 @@ class SushiAllArmatureOperator(SushiAllOperator):
 
 class SushiArmatureOperator(SushiSelectedOperator):
     sk_obj_type = "ARMATURE"
+
+
+class SushiBoneOperator(SushiBaseOperator):
+    sk_bone_exec: Callable[[Object, EditBone], None]
+
+    def execute(self, context: Context) -> Set[str]:
+        self.sk_bone_exec(context.active_object, context.active_bone)
+
+        return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context) -> bool:
+        return (
+            context.active_object
+            and context.active_object.type == "ARMATURE"
+            and context.active_bone
+            and context.mode == "EDIT_ARMATURE"
+        )
+
+
+class SushiBonesOperator(SushiBaseOperator):
+    sk_bones_exec: Callable[[Object, EditBone, EditBone], None]
+
+    def execute(self, context: Context) -> Set[str]:
+        self.sk_bones_exec(
+            context.active_object, context.active_bone, context.selected_bones
+        )
+
+        return {"FINISHED"}
+
+    @classmethod
+    def poll(cls, context: Context) -> bool:
+        return (
+            context.active_object
+            and context.active_object.type == "ARMATURE"
+            and context.active_bone
+            and context.selected_bones
+            and len(context.selected_bones) > 0
+            and context.mode == "EDIT_ARMATURE"
+        )

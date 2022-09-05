@@ -23,6 +23,7 @@ class SUSHI_CLEANUP_DedupNames(SushiBaseOperator):
         dedup_names(bpy.data.cameras)
         dedup_names(bpy.data.collections)
         dedup_names(bpy.data.curves)
+        dedup_names(bpy.data.images)
         dedup_names(bpy.data.lights)
         dedup_names(bpy.data.materials)
         dedup_names(bpy.data.meshes)

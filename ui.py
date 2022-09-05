@@ -4,6 +4,7 @@ import bpy
 from bpy.types import Context
 
 from .operators.groups import (
+    BONE_ALL,
     COPY_FROM_TO,
     DELETE_ALL,
     DELETE_SELECTED,
@@ -14,7 +15,7 @@ from .operators.groups import (
     SORT_ALL,
     SORT_SELECTED,
 )
-from .operators.sushi_base_operator import SushiBaseOperator
+from .operators.sushi_base_operator import SushiBaseOperator, SushiBoneOperator
 from .preferences import SushiCleanupsAddonPreferences
 from .version import ADDON_NAME
 
@@ -167,7 +168,23 @@ class SUSHI_CLEANUP_PT_Copy_From_To(SushiBasePanel):
     sk_operators = COPY_FROM_TO
 
 
+class SUSHI_CLEANUP_PT_Bones(SushiBasePanel):
+    bl_category = "Sushi Cleanups"
+    bl_label = "Bones"
+    bl_idname = "SUSHI_CLEANUP_PT_Bones"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_options = {"DEFAULT_CLOSED"}
+
+    sk_operators = BONE_ALL
+
+    # @classmethod
+    # def poll(cls, context: Context) -> bool:
+    #     return SushiBoneOperator.poll()
+
+
 UI_CLASSES = [
+    SUSHI_CLEANUP_PT_Bones,
     SUSHI_CLEANUP_PT_Delete_All,
     SUSHI_CLEANUP_PT_Delete_Selected,
     SUSHI_CLEANUP_PT_Delete_Similar,

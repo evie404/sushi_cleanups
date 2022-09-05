@@ -1,17 +1,16 @@
 from typing import Set
 
-from sushi_cleanups.operators.copy_object_custom_properties import (
+from .bone_align_connect import SUSHI_CLEANUP_BoneAlignConnectParentsHead
+from .bone_connect import (
+    SUSHI_CLEANUP_BoneSetConnected,
+    SUSHI_CLEANUP_BoneUnsetConnected,
+)
+from .bone_parent_to_active import SUSHI_CLEANUP_BoneParentToActive
+from .bone_print import SUSHI_CLEANUP_BonePrintDict, SUSHI_CLEANUP_BonePrintList
+from .copy_object_custom_properties import (
     SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
     SUSHI_CLEANUP_CopyCustomPropertiesWithDriversToSelected,
 )
-from sushi_cleanups.operators.delete_similar_same_material import (
-    SUSHI_CLEANUP_DeleteSameMaterialObjects,
-)
-from sushi_cleanups.operators.delete_similar_same_mesh import (
-    SUSHI_CLEANUP_DeleteSameMeshObjects,
-)
-from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
-
 from .dedup_names import SUSHI_CLEANUP_DedupNames
 from .delete_armature_empty_bone_groups import (
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll,
@@ -45,10 +44,13 @@ from .delete_mesh_unused_vertex_colors import (
     SUSHI_CLEANUP_DeleteUnusedVertexColorsAll,
     SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected,
 )
+from .delete_similar_same_material import SUSHI_CLEANUP_DeleteSameMaterialObjects
+from .delete_similar_same_mesh import SUSHI_CLEANUP_DeleteSameMeshObjects
 from .rename_global_unique_armatures import SUSHI_CLEANUP_RenameUniqueArmatures
 from .rename_global_unique_meshes import SUSHI_CLEANUP_RenameUniqueMeshes
 from .rename_global_unique_user_materials import SUSHI_CLEANUP_RenameUniqueUserMaterials
 from .sort_global_all_vertex_groups import SUSHI_CLEANUP_SortVertexGroups
+from .sushi_base_operator import SushiBaseOperator
 
 ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_DedupNames,
@@ -78,6 +80,12 @@ ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_SortVertexGroups,
     SUSHI_CLEANUP_CopyCustomPropertiesToSelected,
     SUSHI_CLEANUP_CopyCustomPropertiesWithDriversToSelected,
+    SUSHI_CLEANUP_BoneParentToActive,
+    SUSHI_CLEANUP_BoneSetConnected,
+    SUSHI_CLEANUP_BoneUnsetConnected,
+    SUSHI_CLEANUP_BoneAlignConnectParentsHead,
+    SUSHI_CLEANUP_BonePrintDict,
+    SUSHI_CLEANUP_BonePrintList,
 }
 
 DELETE_ALL: Set[SushiBaseOperator] = {
@@ -120,3 +128,5 @@ SORT_SELECTED: Set[SushiBaseOperator] = {
 COPY_FROM_TO: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "COPY" in x.sk_tags and "FROM_TO" in x.sk_tags
 }
+
+BONE_ALL: Set[SushiBaseOperator] = {x for x in ALL_OPERATIONS if "BONE" in x.sk_tags}
