@@ -1,5 +1,11 @@
 from typing import Set
 
+from sushi_cleanups.operators.delete_similar_same_material import (
+    SUSHI_CLEANUP_DeleteSameMaterialObjects,
+)
+from sushi_cleanups.operators.delete_similar_same_mesh import (
+    SUSHI_CLEANUP_DeleteSameMeshObjects,
+)
 from sushi_cleanups.operators.sushi_base_operator import SushiBaseOperator
 
 from .delete_armature_empty_bone_groups import (
@@ -41,27 +47,29 @@ from .sort_global_all_vertex_groups import SUSHI_CLEANUP_SortVertexGroups
 
 ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll,
+    SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected,
     SUSHI_CLEANUP_DeleteEmptyCollections,
     SUSHI_CLEANUP_DeleteEmptyUVMapsAll,
+    SUSHI_CLEANUP_DeleteEmptyUVMapsSelected,
     SUSHI_CLEANUP_DeleteEmptyVertexColorsAll,
+    SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected,
     SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll,
+    SUSHI_CLEANUP_DeleteEmptyVertexGroupsSelected,
+    SUSHI_CLEANUP_DeleteSameMaterialObjects,
+    SUSHI_CLEANUP_DeleteSameMeshObjects,
     SUSHI_CLEANUP_DeleteUnusedArmatures,
     SUSHI_CLEANUP_DeleteUnusedMaterials,
     SUSHI_CLEANUP_DeleteUnusedMaterialSlotsAll,
+    SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected,
     SUSHI_CLEANUP_DeleteUnusedMeshes,
-    SUSHI_CLEANUP_DeleteUnusedVertexColorsAll,
     SUSHI_CLEANUP_DeleteUnusedUVMapsAll,
+    SUSHI_CLEANUP_DeleteUnusedUVMapsSelected,
+    SUSHI_CLEANUP_DeleteUnusedVertexColorsAll,
+    SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected,
     SUSHI_CLEANUP_RenameUniqueArmatures,
     SUSHI_CLEANUP_RenameUniqueMeshes,
     SUSHI_CLEANUP_RenameUniqueUserMaterials,
     SUSHI_CLEANUP_SortVertexGroups,
-    SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected,
-    SUSHI_CLEANUP_DeleteEmptyUVMapsSelected,
-    SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected,
-    SUSHI_CLEANUP_DeleteEmptyVertexGroupsSelected,
-    SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected,
-    SUSHI_CLEANUP_DeleteUnusedUVMapsSelected,
-    SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected,
 }
 
 DELETE_ALL: Set[SushiBaseOperator] = {
@@ -70,6 +78,10 @@ DELETE_ALL: Set[SushiBaseOperator] = {
 
 DELETE_SELECTED: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "DELETE" in x.sk_tags
+}
+
+DELETE_SIMILAR: Set[SushiBaseOperator] = {
+    x for x in ALL_OPERATIONS if "SIMILAR" in x.sk_tags and "DELETE" in x.sk_tags
 }
 
 RENAME_ALL: Set[SushiBaseOperator] = {

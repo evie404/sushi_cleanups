@@ -6,6 +6,7 @@ from bpy.types import Context
 from .operators.groups import (
     DELETE_ALL,
     DELETE_SELECTED,
+    DELETE_SIMILAR,
     RENAME_ALL,
     RENAME_SELECTED,
     SORT_ALL,
@@ -41,6 +42,18 @@ class SushiBasePanel(bpy.types.Panel):
     @classmethod
     def poll(cls, context: Context) -> bool:
         return len(cls.sk_operators) > 0
+
+
+class SUSHI_CLEANUP_PT_Delete_Similar(SushiBasePanel):
+    bl_category = "Sushi Cleanups"
+    bl_label = "Delete Similar to Active Object"
+    bl_idname = "SUSHI_CLEANUP_PT_Delete_Similar"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_context = "objectmode"
+    bl_options = {"DEFAULT_CLOSED"}
+
+    sk_operators = DELETE_SIMILAR
 
 
 class SUSHI_CLEANUP_PT_Delete_Selected(SushiBasePanel):
@@ -118,6 +131,7 @@ class SUSHI_CLEANUP_PT_Sort_All(SushiBasePanel):
 UI_CLASSES = [
     SUSHI_CLEANUP_PT_Delete_All,
     SUSHI_CLEANUP_PT_Delete_Selected,
+    SUSHI_CLEANUP_PT_Delete_Similar,
     SUSHI_CLEANUP_PT_Rename_All,
     SUSHI_CLEANUP_PT_Rename_Selected,
     SUSHI_CLEANUP_PT_Sort_All,
