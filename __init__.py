@@ -41,10 +41,10 @@ if "bpy" in locals():
 
 import bpy
 
-from .operations import OPERATION_CLASSES
+from .operators.groups import ALL_OPERATIONS
 from .ui import UI_CLASSES
 
-ALL_CLASSES = list(OPERATION_CLASSES) + list(UI_CLASSES)
+ALL_CLASSES = list(ALL_OPERATIONS) + list(UI_CLASSES)
 
 
 def register():
