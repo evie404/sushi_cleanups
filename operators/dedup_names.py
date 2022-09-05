@@ -1,5 +1,7 @@
+from typing import Dict
+
 import bpy
-from bpy.types import Context
+from bpy.types import ID, Context
 
 from .sushi_base_operator import SushiBaseOperator
 
@@ -10,20 +12,23 @@ class SUSHI_CLEANUP_DedupNames(SushiBaseOperator):
     bl_description = "\n".join(
         [
             "Renames all objects/data blocks if they are the only instance of the same name.",
-            "Currently works for objects, collections, mesh, armature, and material data.",
-            "",
-            "Example: 'Sushi.002' renamed to 'Sushi' if it is the only object named 'Sushi.xxx'",
+            "Currently works for armature, camera, collection, curve, light, material, mesh, object, particle, and text data",
         ]
     )
     sk_tags = {"ALL", "RENAME"}
 
     # TODO: debug
     def execute(self, context: Context):
-        dedup_object_names()
-        dedup_collection_names()
-        dedup_mesh_names()
-        dedup_armature_names()
-        dedup_material_names()
+        dedup_names(bpy.data.armatures)
+        dedup_names(bpy.data.cameras)
+        dedup_names(bpy.data.collections)
+        dedup_names(bpy.data.curves)
+        dedup_names(bpy.data.lights)
+        dedup_names(bpy.data.materials)
+        dedup_names(bpy.data.meshes)
+        dedup_names(bpy.data.objects)
+        dedup_names(bpy.data.particles)
+        dedup_names(bpy.data.texts)
 
         return {"FINISHED"}
 
@@ -105,58 +110,13 @@ def original_name_of(name: str) -> str:
     return name
 
 
-def dedup_object_names() -> None:
-    for obj in bpy.data.objects:
-        orig_name = original_name_of(obj.name)
-        if orig_name == obj.name:
+def dedup_names(collection: Dict[str, ID]) -> None:
+    for instance in collection:
+        instance: ID
+
+        orig_name = original_name_of(instance.name)
+        if orig_name == instance.name:
             continue
 
-        if orig_name not in bpy.data.objects:
-            obj.name = orig_name
-
-
-def dedup_collection_names() -> None:
-    for collection in bpy.data.collections:
-        orig_name = original_name_of(collection.name)
-        if orig_name == collection.name:
-            continue
-
-        if orig_name not in bpy.data.collections:
-            collection.name = orig_name
-
-
-def dedup_mesh_names() -> None:
-    for mesh in bpy.data.meshes:
-        orig_name = original_name_of(mesh.name)
-        if orig_name == mesh.name:
-            continue
-
-        if orig_name not in bpy.data.meshes:
-            mesh.name = orig_name
-
-
-def dedup_armature_names() -> None:
-    for armature in bpy.data.armatures:
-        orig_name = original_name_of(armature.name)
-        if orig_name == armature.name:
-            continue
-
-        if orig_name not in bpy.data.armatures:
-            armature.name = orig_name
-
-
-def dedup_material_names() -> None:
-    for material in bpy.data.materials:
-        orig_name = original_name_of(material.name)
-
-        print(f"{material.name}: original name is `{orig_name}`")
-
-        if orig_name == material.name:
-            print(f"{material.name}: is original")
-            continue
-
-        if orig_name not in bpy.data.materials:
-            print(
-                f"{material.name}: original does not exist. renaming to `{orig_name}`"
-            )
-            material.name = orig_name
+        if orig_name not in collection:
+            instance.name = orig_name
