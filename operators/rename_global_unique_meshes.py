@@ -6,9 +6,8 @@ from .sushi_base_operator import SushiBaseOperator
 
 class SUSHI_CLEANUP_RenameUniqueMeshes(SushiBaseOperator):
     bl_idname = "sushi_cleanup.rename_unique_meshes"
-    bl_label = "Rename All Single-User Meshes"
-    bl_description = "Renames meshes data to use their object name"
-    bl_options = {"UNDO"}
+    bl_label = "Rename All Unique Meshes"
+    bl_description = "Renames meshes to their users' name if it only has one user"
 
     sk_tags = {"ALL", "MESH", "UNIQUE", "RENAME"}
 

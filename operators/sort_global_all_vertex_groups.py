@@ -8,7 +8,6 @@ class SUSHI_CLEANUP_SortVertexGroups(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.sort_vertex_groups"
     bl_label = "Sort All Vertex Groups By Name"
     bl_description = "Sort vertex groups by names for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "SORT"}
 

@@ -6,9 +6,8 @@ from .sushi_base_operator import SushiBaseOperator
 
 class SUSHI_CLEANUP_RenameUniqueArmatures(SushiBaseOperator):
     bl_idname = "sushi_cleanup.rename_unique_armatures"
-    bl_label = "Rename All Single-User Armatures"
-    bl_description = "Renames armatures data to use their object name"
-    bl_options = {"UNDO"}
+    bl_label = "Rename All Unique Armatures"
+    bl_description = "Renames armatures to their users' name if it only has one user"
 
     sk_tags = {"ALL", "ARMATURE", "UNIQUE", "RENAME"}
 

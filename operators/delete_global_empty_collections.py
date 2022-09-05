@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteEmptyCollections(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_empty_collections"
     bl_label = "Delete Empty Collections"
     bl_description = "Deletes collections with no children and collapses collections with only one collection children"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "COLLECTION", "EMPTY", "DELETE"}
 

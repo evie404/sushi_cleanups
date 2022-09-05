@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteEmptyBoneGroupsAll(SushiAllArmatureOperator):
     bl_idname = "sushi_cleanup.delete_empty_bone_groups_all"
     bl_label = "Delete All Empty Bone Groups"
     bl_description = "Deletes bone groups with no vertices for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "BONE_GROUP", "EMPTY", "ARMATURE", "DELETE"}
 
@@ -22,7 +21,6 @@ class SUSHI_CLEANUP_DeleteEmptyBoneGroupsSelected(SushiArmatureOperator):
     bl_idname = "sushi_cleanup.delete_empty_bone_groups_selected"
     bl_label = "Delete Empty Bone Groups"
     bl_description = "Deletes bone groups with no vertices for the selected object"
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "BONE_GROUP", "EMPTY", "ARMATURE", "DELETE"}
 

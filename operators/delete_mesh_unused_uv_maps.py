@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_uv_maps_all"
     bl_label = "Delete All Unused UV Maps"
     bl_description = "Deletes unused UV maps for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "MESH", "UNUSED", "UV_MAP", "DELETE"}
 
@@ -22,7 +21,6 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_uv_maps_selected"
     bl_label = "Delete Unused UV Maps"
     bl_description = "Deletes unused UV maps for the selected object"
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "MESH", "UNUSED", "UV_MAP", "DELETE"}
 

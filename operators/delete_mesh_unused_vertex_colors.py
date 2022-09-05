@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteUnusedVertexColorsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_vertex_colors_all"
     bl_label = "Delete All Unused Vertex Colors"
     bl_description = "Deletes non-active vertex colors for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "MESH", "UNUSED", "VERTEX_COLOR", "DELETE"}
 
@@ -22,7 +21,6 @@ class SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_vertex_colors_selected"
     bl_label = "Delete Unused Vertex Colors"
     bl_description = "Deletes non-active vertex colors for the selected object"
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "MESH", "UNUSED", "VERTEX_COLOR", "DELETE"}
 

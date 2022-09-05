@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteUnusedArmatures(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_unused_armatures"
     bl_label = "Delete All Unused Armatures"
     bl_description = "Deletes armatures with no users"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "ARMATURE", "UNUSED", "DELETE"}
 

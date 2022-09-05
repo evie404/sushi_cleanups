@@ -5,6 +5,8 @@ from bpy.types import Context, Object
 
 
 class SushiBaseOperator(bpy.types.Operator):
+    bl_options = {"UNDO"}
+
     sk_tags: Set[str]
 
     @classmethod

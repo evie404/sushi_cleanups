@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_groups_all"
     bl_label = "Delete All Empty Vertex Groups"
     bl_description = "Deletes vertex groups with no vertices for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "DELETE"}
 
@@ -22,7 +21,6 @@ class SUSHI_CLEANUP_DeleteEmptyVertexGroupsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_groups_selected"
     bl_label = "Delete Empty Vertex Groups"
     bl_description = "Deletes vertex groups with no vertices for the selected object"
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "VERTEX_GROUP", "EMPTY", "MESH", "DELETE"}
 

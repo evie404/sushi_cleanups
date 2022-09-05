@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteUnusedMeshes(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_unused_meshes"
     bl_label = "Delete All Unused Meshes"
     bl_description = "Deletes meshes with no users"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "MESH", "UNUSED", "DELETE"}
 

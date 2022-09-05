@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteUnusedMaterials(SushiBaseOperator):
     bl_idname = "sushi_cleanup.delete_unused_materials"
     bl_label = "Delete All Unused Materials"
     bl_description = "Deletes materials with no users"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "MATERIAL", "UNUSED", "DELETE"}
 

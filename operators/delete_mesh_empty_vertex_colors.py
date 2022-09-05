@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_colors_all"
     bl_label = "[Buggy] Delete All Empty Vertex Colors"
     bl_description = "Deletes vertex colors with only default colors for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
@@ -24,7 +23,6 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
     bl_description = (
         "Deletes vertex colors with only default colors for the selected object"
     )
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 

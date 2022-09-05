@@ -10,7 +10,6 @@ class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_uv_maps_all"
     bl_label = "[Buggy] Delete All Empty UV Maps"
     bl_description = "Deletes UV maps with only default coordinates for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "UV_MAP", "EMPTY", "MESH", "DELETE"}
 
@@ -24,7 +23,6 @@ class SUSHI_CLEANUP_DeleteEmptyUVMapsSelected(SushiMeshOperator):
     bl_description = (
         "Deletes UV maps with only default coordinates for the selected object"
     )
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "UV_MAP", "EMPTY", "MESH", "DELETE"}
 

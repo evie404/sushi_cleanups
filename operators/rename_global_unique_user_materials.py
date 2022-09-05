@@ -8,9 +8,8 @@ from .sushi_base_operator import SushiBaseOperator
 
 class SUSHI_CLEANUP_RenameUniqueUserMaterials(SushiBaseOperator):
     bl_idname = "sushi_cleanup.rename_unique_user_materials"
-    bl_label = "Rename All Single-User Materials"
-    bl_description = "Renames materials that only have one user to their user's name"
-    bl_options = {"UNDO"}
+    bl_label = "Rename All Unique Materials"
+    bl_description = "Renames materials to their users' name if it only has one user"
 
     sk_tags = {"ALL", "MESH", "MATERIAL", "UNIQUE", "RENAME"}
 

@@ -8,7 +8,6 @@ class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_material_slots_all"
     bl_label = "Delete All Unused Material Slots"
     bl_description = "Deletes material slots with no vertices for all objects"
-    bl_options = {"UNDO"}
 
     sk_tags = {"ALL", "MESH", "MATERIAL_SLOT" "UNUSED", "DELETE"}
 
@@ -21,7 +20,6 @@ class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_material_slots_selected"
     bl_label = "Delete Unused Material Slots"
     bl_description = "Deletes material slots with no vertices for the selected object"
-    bl_options = {"UNDO"}
 
     sk_tags = {"SELECTED", "MESH", "MATERIAL_SLOT" "UNUSED", "DELETE"}
 
