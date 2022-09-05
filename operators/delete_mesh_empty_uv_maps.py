@@ -8,7 +8,7 @@ from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_uv_maps_all"
-    bl_label = "Delete All Empty UV Maps"
+    bl_label = "[Buggy] Delete All Empty UV Maps"
     bl_description = "Deletes UV maps with only default coordinates for all objects"
     bl_options = {"UNDO"}
 
@@ -20,7 +20,7 @@ class SUSHI_CLEANUP_DeleteEmptyUVMapsAll(SushiAllMeshOperator):
 
 class SUSHI_CLEANUP_DeleteEmptyUVMapsSelected(SushiMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_uv_maps_selected"
-    bl_label = "Delete Empty UV Maps"
+    bl_label = "[Buggy] Delete Empty UV Maps"
     bl_description = (
         "Deletes UV maps with only default coordinates for the selected object"
     )
