@@ -1,7 +1,9 @@
+from .version_0_0_1 import VERSION
+
 bl_info = {
     "name": "Sushi Cleanups",
     "author": "SushiKitty",
-    "version": (0, 0, 1),
+    "version": VERSION,
     "blender": (2, 92, 0),
     "description": "Small scripts to clean up data and objects",
     "location": "View3D > Sidebar > Sushi Cleanups",
@@ -41,8 +43,8 @@ if "bpy" in locals():
 
 import bpy
 
-from sushi_cleanups.operations import OPERATION_CLASSES
-from sushi_cleanups.ui import UI_CLASSES
+from .operations import OPERATION_CLASSES
+from .ui import UI_CLASSES
 
 ALL_CLASSES = list(OPERATION_CLASSES) + list(UI_CLASSES)
 

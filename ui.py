@@ -3,7 +3,7 @@ from typing import Dict
 import bpy
 from bpy.types import Context, Operator
 
-from sushi_cleanups.operations import OPERATIONS_ALL, OPERATIONS_SELECTED
+from .operations import OPERATIONS_ALL, OPERATIONS_SELECTED
 
 
 class SUSHI_CLEANUP_PT_Selected(bpy.types.Panel):
