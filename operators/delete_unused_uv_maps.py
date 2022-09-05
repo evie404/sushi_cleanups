@@ -1,12 +1,12 @@
-from typing import List, Set
+from typing import List
 
 import bpy
-from bpy.types import Context, MeshUVLoopLayer, Object
+from bpy.types import MeshUVLoopLayer, Object
 
-from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
+from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_DeleteUnusedUVMapsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteUnusedUVMapsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_uv_maps_all"
     bl_label = "Delete All Unused UV Maps"
     bl_description = "Deletes unused UV maps for all objects"
@@ -14,12 +14,8 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "MESH", "UNUSED", "UV_MAP", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            if obj.type == "MESH":
-                _delete_unused_uv_maps(obj)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_uv_maps(obj)
 
 
 class SUSHI_CLEANUP_DeleteUnusedUVMapsSelected(SushiMeshOperator):
@@ -30,10 +26,8 @@ class SUSHI_CLEANUP_DeleteUnusedUVMapsSelected(SushiMeshOperator):
 
     sk_tags = {"SELECTED", "MESH", "UNUSED", "UV_MAP", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        _delete_unused_uv_maps(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_uv_maps(obj)
 
 
 def _delete_unused_uv_maps(obj: Object) -> None:
@@ -55,4 +49,4 @@ def _delete_unused_uv_maps(obj: Object) -> None:
             continue
 
         print(f"[{obj.name}] Removing unused UV map `{uv_layer.name}`")
-        obj.data.uv_layers.delete(uv_layer)
+        obj.data.uv_layers.remove(uv_layer)

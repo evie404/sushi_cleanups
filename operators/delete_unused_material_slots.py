@@ -1,12 +1,10 @@
-from typing import Set
-
 import bpy
-from bpy.types import Context, Object
+from bpy.types import Object
 
-from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
+from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_material_slots_all"
     bl_label = "Delete All Unused Material Slots"
     bl_description = "Deletes material slots with no vertices for all objects"
@@ -14,11 +12,9 @@ class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "MESH", "MATERIAL_SLOT" "UNUSED", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            _delete_unused_material_slots(obj)
-
-        return {"FINISHED"}
+    # TODO: debug
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_material_slots(obj)
 
 
 class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected(SushiMeshOperator):
@@ -29,10 +25,8 @@ class SUSHI_CLEANUP_DeleteUnusedMaterialSlotsSelected(SushiMeshOperator):
 
     sk_tags = {"SELECTED", "MESH", "MATERIAL_SLOT" "UNUSED", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        _delete_unused_material_slots(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_material_slots(obj)
 
 
 def _delete_unused_material_slots(obj: Object) -> None:
@@ -45,7 +39,7 @@ def _delete_unused_material_slots(obj: Object) -> None:
         obj.hide_viewport = False
         previously_hidden = True
 
-    bpy.ops.object.material_slot_delete_unused({"object": obj})
+    bpy.ops.object.material_slot_remove_unused({"object": obj})
 
     if previously_hidden:
         obj.hide_viewport = True

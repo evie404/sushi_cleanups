@@ -54,6 +54,6 @@ def _delete_empty_bone_groups(armobj: Object) -> None:
             bone_groups_to_delete.append(bone_group)
 
     for bone_group in bone_groups_to_delete:
-        armobj.pose.bone_groups.delete(bone_group)
+        armobj.pose.bone_groups.remove(bone_group)
 
     print(f"[{armobj.name}] Removing empty bone groups (Finished)")

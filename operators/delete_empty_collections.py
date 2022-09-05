@@ -27,7 +27,7 @@ class SUSHI_CLEANUP_DeleteEmptyCollections(SushiBaseOperator):
             self._delete_empty_collections(child)
 
         if len(root.all_objects) == 0:
-            bpy.data.collections.delete(root)
+            bpy.data.collections.remove(root)
             return
 
     def _delete_redundant_collections(
@@ -41,6 +41,6 @@ class SUSHI_CLEANUP_DeleteEmptyCollections(SushiBaseOperator):
                 parent.children.link(child)
                 root.children.unlink(child)
 
-            bpy.data.collections.delete(root)
+            bpy.data.collections.remove(root)
 
             return

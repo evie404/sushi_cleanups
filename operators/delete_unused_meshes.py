@@ -19,6 +19,6 @@ class SUSHI_CLEANUP_DeleteUnusedMeshes(SushiBaseOperator):
             mesh: Mesh
 
             if mesh.users == 0:
-                bpy.data.meshes.delete(mesh)
+                bpy.data.meshes.remove(mesh)
 
         return {"FINISHED"}

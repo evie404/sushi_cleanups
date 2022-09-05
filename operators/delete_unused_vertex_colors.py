@@ -1,12 +1,12 @@
-from typing import List, Set
+from typing import List
 
 import bpy
-from bpy.types import Context, MeshLoopColor, MeshLoopColorLayer, Object
+from bpy.types import MeshLoopColor, MeshLoopColorLayer, Object
 
-from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
+from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_DeleteUnusedVertexColorsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteUnusedVertexColorsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_unused_vertex_colors_all"
     bl_label = "Delete All Unused Vertex Colors"
     bl_description = "Deletes non-active vertex colors for all objects"
@@ -14,13 +14,8 @@ class SUSHI_CLEANUP_DeleteUnusedVertexColorsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "MESH", "UNUSED", "VERTEX_COLOR", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            obj: Object
-            if obj.type == "MESH":
-                _delete_unused_vertex_colors(obj)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_vertex_colors(obj)
 
 
 class SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected(SushiMeshOperator):
@@ -31,10 +26,8 @@ class SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected(SushiMeshOperator):
 
     sk_tags = {"SELECTED", "MESH", "UNUSED", "VERTEX_COLOR", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        _delete_unused_vertex_colors(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_unused_vertex_colors(obj)
 
 
 def _delete_unused_vertex_colors(obj: Object) -> None:
@@ -56,4 +49,4 @@ def _delete_unused_vertex_colors(obj: Object) -> None:
             continue
 
         print(f"[{obj.name}] Removing unused vertex colors `{vertex_color.name}`")
-        obj.data.vertex_colors.delete(vertex_color)
+        obj.data.vertex_colors.remove(vertex_color)

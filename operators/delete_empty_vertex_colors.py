@@ -1,12 +1,12 @@
-from typing import List, Set
+from typing import List
 
 import bpy
-from bpy.types import Context, Mesh, MeshLoopColor, MeshLoopColorLayer, Object
+from bpy.types import Mesh, MeshLoopColor, MeshLoopColorLayer, Object
 
-from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
+from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_colors_all"
     bl_label = "[Buggy] Delete All Empty Vertex Colors"
     bl_description = "Deletes vertex colors with only default colors for all objects"
@@ -14,16 +14,8 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
-    # TODO: debug
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            obj: Object
-            if obj.type != "MESH":
-                continue
-
-            _delete_vertex_colors(obj)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_vertex_colors(obj)
 
 
 class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
@@ -37,10 +29,8 @@ class SUSHI_CLEANUP_DeleteEmptyVertexColorsSelected(SushiMeshOperator):
     sk_tags = {"SELECTED", "VERTEX_COLOR", "EMPTY", "MESH", "DELETE"}
 
     # TODO: debug
-    def execute(self, context: Context) -> Set[str]:
-        _delete_vertex_colors(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_vertex_colors(obj)
 
 
 def _delete_vertex_colors(obj: Object) -> None:
@@ -71,4 +61,4 @@ def _delete_vertex_colors(obj: Object) -> None:
             continue
 
         print(f"{obj.name}: removing color map `{vertex_color.name}`")
-        mesh.vertex_colors.delete(vertex_color)
+        mesh.vertex_colors.remove(vertex_color)

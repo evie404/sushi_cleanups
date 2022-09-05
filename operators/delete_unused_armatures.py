@@ -19,6 +19,6 @@ class SUSHI_CLEANUP_DeleteUnusedArmatures(SushiBaseOperator):
             armature: Armature
 
             if armature.users == 0:
-                bpy.data.armatures.delete(armature)
+                bpy.data.armatures.remove(armature)
 
         return {"FINISHED"}

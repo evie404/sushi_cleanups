@@ -1,12 +1,10 @@
-from typing import Set
-
 import bpy
-from bpy.types import Context, Object
+from bpy.types import Object
 
-from .sushi_base_operator import SushiBaseOperator
+from .sushi_base_operator import SushiAllMeshOperator
 
 
-class SUSHI_CLEANUP_SortVertexGroups(SushiBaseOperator):
+class SUSHI_CLEANUP_SortVertexGroups(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.sort_vertex_groups"
     bl_label = "Sort All Vertex Groups By Name"
     bl_description = "Sort vertex groups by names for all objects"
@@ -14,21 +12,13 @@ class SUSHI_CLEANUP_SortVertexGroups(SushiBaseOperator):
 
     sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "SORT"}
 
-    def execute(self, context: Context) -> Set[str]:
+    def sk_obj_exec(self, obj: Object) -> None:
         bpy.context.view_layer.objects.active = None
 
-        for obj in bpy.data.objects:
-            obj: Object
+        if len(obj.vertex_groups) < 1:
+            return
 
-            if not obj.type == "MESH":
-                continue
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
 
-            if len(obj.vertex_groups) < 1:
-                continue
-
-            obj.select_set(True)
-            bpy.context.view_layer.objects.active = obj
-
-            bpy.ops.object.vertex_group_sort()
-
-        return {"FINISHED"}
+        bpy.ops.object.vertex_group_sort()

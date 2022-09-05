@@ -17,6 +17,6 @@ class SUSHI_CLEANUP_DeleteUnusedMaterials(SushiBaseOperator):
     def execute(self, context: Context) -> Set[str]:
         for material in bpy.data.materials:
             if not material.users:
-                bpy.data.materials.delete(material)
+                bpy.data.materials.remove(material)
 
         return {"FINISHED"}

@@ -1,12 +1,12 @@
-from typing import Dict, Set
+from typing import Dict
 
 import bpy
-from bpy.types import Context, Mesh, Object
+from bpy.types import Mesh, Object
 
-from .sushi_base_operator import SushiBaseOperator, SushiMeshOperator
+from .sushi_base_operator import SushiAllMeshOperator, SushiMeshOperator
 
 
-class SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll(SushiBaseOperator):
+class SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll(SushiAllMeshOperator):
     bl_idname = "sushi_cleanup.delete_empty_vertex_groups_all"
     bl_label = "Delete All Empty Vertex Groups"
     bl_description = "Deletes vertex groups with no vertices for all objects"
@@ -14,12 +14,8 @@ class SUSHI_CLEANUP_DeleteEmptyVertexGroupsAll(SushiBaseOperator):
 
     sk_tags = {"ALL", "VERTEX_GROUP", "EMPTY", "MESH", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        for obj in bpy.data.objects:
-            if obj.type == "MESH":
-                _delete_empty_vertex_groups(obj)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_empty_vertex_groups(obj)
 
 
 class SUSHI_CLEANUP_DeleteEmptyVertexGroupsSelected(SushiMeshOperator):
@@ -30,10 +26,8 @@ class SUSHI_CLEANUP_DeleteEmptyVertexGroupsSelected(SushiMeshOperator):
 
     sk_tags = {"SELECTED", "VERTEX_GROUP", "EMPTY", "MESH", "DELETE"}
 
-    def execute(self, context: Context) -> Set[str]:
-        _delete_empty_vertex_groups(bpy.context.active_object)
-
-        return {"FINISHED"}
+    def sk_obj_exec(self, obj: Object) -> None:
+        _delete_empty_vertex_groups(obj)
 
 
 def _delete_empty_vertex_groups(obj: Object) -> None:
@@ -53,7 +47,7 @@ def _delete_empty_vertex_groups(obj: Object) -> None:
 
     for vertex_group in obj.vertex_groups:
         if vertex_group.name not in used_vertex_groups:
-            obj.vertex_groups.delete(vertex_group)
+            obj.vertex_groups.remove(vertex_group)
             vertex_groups_deleted = vertex_groups_deleted + 1
 
     vertex_groups_after = len(obj.vertex_groups)
