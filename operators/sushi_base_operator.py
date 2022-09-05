@@ -45,7 +45,7 @@ class SushiSelectedOperator(SushiBaseOperator):
 
     @classmethod
     def poll(cls, context: Context):
-        return context.active_object and context.active_object.type == sk_obj_type
+        return context.active_object and context.active_object.type == cls.sk_obj_type
 
 
 class SushiAllMeshOperator(SushiAllOperator):

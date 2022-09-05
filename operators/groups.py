@@ -64,11 +64,11 @@ ALL_OPERATIONS: Set[SushiBaseOperator] = {
     SUSHI_CLEANUP_DeleteUnusedVertexColorsSelected,
 }
 
-DELETE_MESH_ALL: Set[SushiBaseOperator] = {
+DELETE_ALL: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "ALL" in x.sk_tags and "DELETE" in x.sk_tags
 }
 
-DELETE_MESH_SELECTED: Set[SushiBaseOperator] = {
+DELETE_SELECTED: Set[SushiBaseOperator] = {
     x for x in ALL_OPERATIONS if "SELECTED" in x.sk_tags and "DELETE" in x.sk_tags
 }
 
