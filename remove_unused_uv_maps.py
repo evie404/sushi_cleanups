@@ -33,7 +33,7 @@ class SUSHI_CLEANUP_RemoveUnusedUVMaps(bpy.types.Operator):
                 if uv_layer.name not in obj.data.uv_layers:
                     continue
 
-                print(f"{obj.name}: removing unused UV map `{uv_layer.name}`")
+                print(f"[{obj.name}] Removing unused UV map `{uv_layer.name}`")
                 obj.data.uv_layers.remove(uv_layer)
 
         return {"FINISHED"}

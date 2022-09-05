@@ -60,5 +60,5 @@ def _remove_empty_vertex_groups(obj: Object) -> None:
     vertex_groups_after = len(obj.vertex_groups)
 
     print(
-        f"{obj.name}: removed {vertex_groups_removed} vertex groups ({vertex_groups_before} -> {vertex_groups_after})"
+        f"[{obj.name}] Removed {vertex_groups_removed} vertex groups ({vertex_groups_before} -> {vertex_groups_after})"
     )

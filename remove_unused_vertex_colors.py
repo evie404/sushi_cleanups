@@ -33,7 +33,9 @@ class SUSHI_CLEANUP_RemoveUnusedVertexColors(bpy.types.Operator):
                 if vertex_color.name not in obj.data.vertex_colors:
                     continue
 
-                print(f"{obj.name}: removing unused color map `{vertex_color.name}`")
+                print(
+                    f"[{obj.name}] Removing unused vertex colors `{vertex_color.name}`"
+                )
                 obj.data.vertex_colors.remove(vertex_color)
 
         return {"FINISHED"}

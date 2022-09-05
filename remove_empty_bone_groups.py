@@ -37,7 +37,7 @@ class SUSHI_CLEANUP_RemoveEmptyBoneGroupsAll(SushiBaseOperation):
 
 
 def _remove_empty_bone_groups(armobj: Object) -> None:
-    print(f"Removing empty bone groups for {armobj.name}...")
+    print(f"[{armobj.name}] Removing empty bone groups (Start)")
 
     bone_groups_with_bones: Dict[str, None] = {}
 
@@ -56,4 +56,4 @@ def _remove_empty_bone_groups(armobj: Object) -> None:
     for bone_group in bone_groups_to_remove:
         armobj.pose.bone_groups.remove(bone_group)
 
-    print(f"Finished removing empty bone groups for {armobj.name}.")
+    print(f"[{armobj.name}] Removing empty bone groups (Finished)")
